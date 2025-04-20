@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { PokemonInfo } from "./pages/PokemonInfo";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1 className='text-red-500'>Hello world</h1>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/pokemon/:id" element={<PokemonInfo />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

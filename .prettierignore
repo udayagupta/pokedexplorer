@@ -1,0 +1,36 @@
+# Don't format build output
+dist
+build
+
+# Ignore dependencies
+node_modules
+
+# System files
+.DS_Store
+
+# Git files
+.git
+.gitignore
+
+# Env config
+.env
+.env.* 
+
+# Lock files (optional, if you don't want Prettier touching them)
+package-lock.json
+yarn.lock
+
+# Public folder (if you don’t want to format static assets)
+public
+
+# VS Code settings (optional)
+.vscode
+
+# Ignore all images and assets
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.svg
+**/*.ico
+**/*.gif
+**/*.webp
