@@ -5,6 +5,7 @@ body {
     font-family: "Jockey One";
     display: flex;
     justify-content: center;
+    padding-inline: 6rem;
     /* border: 1px solid; */
 }
 
@@ -31,7 +32,6 @@ input:focus {
 
 .type-hover:hover {
     animation: type-hover alternate linear 500ms infinite;
-    box-shadow: 0px 0px 10px 0px rgb(0, 191, 255);
 }
 
 .pokemon-type-item {
@@ -41,3 +41,24 @@ input:focus {
 .pokemon-type-item:active {
     scale: 0.9;
 }
+
+.pokemon-card {
+    transition-duration: 400ms;
+    cursor: pointer;
+}
+
+/* .pokemon-card:hover {
+    box-shadow: 0px 0px 20px 0px rgb(243, 91, 35);
+} */
+
+.pokemon-card:active {
+    scale: 0.9
+}
+
+/* .pokemon-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 2rem;
+    row-gap: 2.2rem;
+
+} */

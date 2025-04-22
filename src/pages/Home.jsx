@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SearchBox from "../components/SearchBox";
-import PokemonTypes from "../components/PokemonTypes";
+import PokemonTypes from "../components/PokemonTypes/PokemonTypes";
+import DisplayPokemon from "../components/DisplayPokemon/DisplayPokemon";
+
 
 export const Home = () => {
+
   return (
     <div className="">
       <header className="p-3 w-full flex flex-col justify-center items-center gap-5">
         <div className="text-center">
-          <h1 className="text-[3.5rem]">PokeDex</h1>
+          <h1 className="text-[4.5rem]">PokeDex</h1>
         </div>
         <div className="">
           <SearchBox />
@@ -16,6 +19,9 @@ export const Home = () => {
           <PokemonTypes />
         </div>
       </header>
+      <main>
+        <DisplayPokemon />
+      </main>
     </div>
   );
 };

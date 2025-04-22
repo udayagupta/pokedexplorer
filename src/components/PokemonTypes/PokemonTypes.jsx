@@ -1,5 +1,5 @@
 import React from "react";
-import PokemonType from "./PokemonType";
+import PokemonType from "../PokemonType";
 
 const PokemonTypes = () => {
   const types = [
@@ -24,10 +24,7 @@ const PokemonTypes = () => {
   ];
 
   return (
-    <section className="p-4">
-      {/* <div className="text-center">
-        <h2 className="text-[2rem]">Pokemon Types</h2>
-      </div> */}
+    <section className="">
       <div className="my-3">
         <ul className="flex gap-5 flex-wrap justify-center">
           {types.map((type, index) => (
@@ -35,9 +32,6 @@ const PokemonTypes = () => {
               <PokemonType type={type} with_text={true} />
             </li>
           ))}
-          {/* {
-            types.map((type, index) => {})
-          } */}
         </ul>
       </div>
     </section>
