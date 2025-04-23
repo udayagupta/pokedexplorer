@@ -30,6 +30,7 @@ input:focus {
     }
 }
 
+
 .type-hover:hover {
     animation: type-hover alternate linear 500ms infinite;
 }
@@ -47,18 +48,23 @@ input:focus {
     cursor: pointer;
 }
 
-/* .pokemon-card:hover {
-    box-shadow: 0px 0px 20px 0px rgb(243, 91, 35);
-} */
+.pokemon-card:hover {
+    box-shadow: 0px 0px 20px 0px rgb(35, 104, 243);
+}
 
 .pokemon-card:active {
     scale: 0.9
 }
 
-/* .pokemon-list {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 2rem;
-    row-gap: 2.2rem;
 
-} */
+@keyframes loader-animation {
+    0% {
+        transform: rotate(0deg);
+    } 100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    animation: loader-animation 1000ms linear infinite alternate;
+}

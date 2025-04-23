@@ -26,7 +26,7 @@ const PokemonTypes = () => {
   return (
     <section className="">
       <div className="my-3">
-        <ul className="flex gap-5 flex-wrap justify-center">
+        <ul className="flex gap-3 flex-wrap justify-center">
           {types.map((type, index) => (
             <li key={index} className="type-hover pokemon-type-item rounded-lg">
               <PokemonType type={type} with_text={true} />

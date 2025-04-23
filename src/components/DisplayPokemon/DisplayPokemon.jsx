@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import PokemonCard from "../PokemonCard";
+import Loader from "../Loader";
 
 const DisplayPokemon = () => {
-  //   const [limit, setLimit] = useState(20);
   const limit = 20;
   const [offset, setOffset] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState([]);
@@ -12,7 +12,6 @@ const DisplayPokemon = () => {
 
   const fetchPokemon = async () => {
     try {
-      // setLoading(true);
       const response = await axios.get(
         `https://pokeapi.co/api/v2/pokemon-species?limit=${limit}&offset=${offset}`
       );
@@ -33,12 +32,12 @@ const DisplayPokemon = () => {
   useEffect(() => {
     fetchPokemon();
   }, [offset]);
-  
+
   return (
-    <section className="my-5">
-      <ul className="pokemon-list grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-10">
+    <section className="my-5 flex justify-center flex-col">
+      <ul className="pokemon-list flex justify-center gap-8 flex-wrap">
         {loading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : (
           currentPokemon?.map((item, index) => (
             <li key={index}>
@@ -47,7 +46,7 @@ const DisplayPokemon = () => {
           ))
         )}
       </ul>
-      {!loading && <button className="mx-auto cursor-pointerm bg-red-500 p-1 text-lg rounded-md" onClick={() => loadMore()}>Load More</button>}
+      {!loading && <button className="mx-auto mt-5 cursor-pointer bg-slate-500 p-1 text-lg rounded-md" onClick={() => loadMore()}>Load More</button>}
     </section>
   );
 };
