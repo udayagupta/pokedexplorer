@@ -22,7 +22,7 @@ export const usePokemonInfo = (id) => {
   };
 
   useEffect(() => {
-    // if (!id) return;
+    if (!id) return;
     console.log("Name: ", id);
     fetchPokemon()
   }, [id]);

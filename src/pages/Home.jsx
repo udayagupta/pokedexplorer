@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import SearchBox from "../components/SearchBox";
+import SearchBox from "../components/SearchBox/SearchBox";
 import PokemonTypes from "../components/PokemonTypes/PokemonTypes";
 import DisplayPokemon from "../components/DisplayPokemon/DisplayPokemon";
 
