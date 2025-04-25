@@ -5,13 +5,11 @@ body {
     font-family: "Jockey One";
     display: flex;
     justify-content: center;
-    padding-inline: 6rem;
-    /* border: 1px solid; */
+    /* padding-inline: 6rem; */
 }
 
 input[id="search-pokemon"] {
     padding-inline: 15px;
-    /* text-align: center; */
 }
 
 
@@ -66,5 +64,5 @@ input:focus {
 }
 
 .loader {
-    animation: loader-animation 1000ms linear infinite alternate;
+    animation: loader-animation 1000ms linear infinite;
 }

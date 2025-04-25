@@ -34,7 +34,7 @@ const DisplayPokemon = () => {
   }, [offset]);
 
   return (
-    <section className="my-5 flex justify-center flex-col">
+    <section className="my-5 flex justify-center flex-col px-9">
       <ul className="pokemon-list flex justify-center gap-8 flex-wrap">
         {loading ? (
           <Loader />
