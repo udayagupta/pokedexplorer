@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export const usePokemonSpecies = (name) => {
+export const usePokemonSpecies = (url) => {
   const [pokemonSpecies, setPokemonSpecies] = useState(null);
   const [loadingSpecies, setLoadingSpecies] = useState(true);
   const [errorSpecies, setErrorSpecies] = useState(false);
@@ -9,7 +9,7 @@ export const usePokemonSpecies = (name) => {
   const fetchPokemonSpecies = async () => {
     try {
       const response = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon-species/${name}`
+        url
       );
       setPokemonSpecies(response.data);
     } catch (error) {
@@ -20,10 +20,9 @@ export const usePokemonSpecies = (name) => {
   };
 
   useEffect(() => {
-    // if (!name) console.log("Name undefined");
-    console.log(name);
+    if (!url) return;
     fetchPokemonSpecies();
-  }, [name]);
+  }, [url]);
 
   return { pokemonSpecies, loadingSpecies, errorSpecies };
 };

@@ -6,6 +6,7 @@ const SearchBox = () => {
   const [value, setValue] = useState("")
   const [data, setData] = useState([])
   const [suggestions, setSuggestions] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +14,7 @@ const SearchBox = () => {
         const response = await axios.get("https://pokeapi.co/api/v2/pokemon-species?limit=100000&offset=0");
         setData(response.data.results)
       } catch (error) {
-        setError(error);
+        setError(error.message);
       }
     }
 
@@ -30,7 +31,6 @@ const SearchBox = () => {
       item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
     ))
     setSuggestions(newSuggestions.slice(0, 5));
-    console.log(suggestions)
   }, [value])
 
   const handleChange = (event) => {
@@ -47,6 +47,7 @@ const SearchBox = () => {
         value={value}
         onChange={(e) => handleChange(e)}
         spellCheck={false}
+        autoComplete={"off"}
       />
       <ul className="absolute w-full rounded-md mt-2 bg-slate-700 overflow-hidden z-10">
         {

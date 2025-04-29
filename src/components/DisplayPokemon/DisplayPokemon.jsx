@@ -15,10 +15,9 @@ const DisplayPokemon = () => {
       const response = await axios.get(
         `https://pokeapi.co/api/v2/pokemon-species?limit=${limit}&offset=${offset}`
       );
-      setCurrentPokemon(prevData => [...prevData, ...response.data.results]);
-      
+      setCurrentPokemon((prevData) => [...prevData, ...response.data.results]);
     } catch (error) {
-      setError(error)
+      setError(error);
       console.log(error);
     } finally {
       setLoading(false);
@@ -26,12 +25,27 @@ const DisplayPokemon = () => {
   };
 
   const loadMore = () => {
-    setOffset(prevData => prevData+limit);
-  }
+    setOffset((prevData) => prevData + limit);
+
+    setTimeout(() => {
+      window.scrollBy({
+        behavior: "smooth",
+        top: 300,
+      })
+    }, 500)
+    
+  };
 
   useEffect(() => {
     fetchPokemon();
   }, [offset]);
+
+
+  if (error) return (
+    <div className="text-center text-3xl">
+      Something went wrong in fetching Pokemons! 😓
+    </div>
+  )
 
   return (
     <section className="my-5 flex justify-center flex-col px-9">
@@ -40,13 +54,22 @@ const DisplayPokemon = () => {
           <Loader />
         ) : (
           currentPokemon?.map((item, index) => (
-            <li key={index}>
+            <li
+              key={index}
+            >
               <PokemonCard name={item.name} />
             </li>
           ))
         )}
       </ul>
-      {!loading && <button className="mx-auto mt-5 cursor-pointer bg-slate-500 p-1 text-lg rounded-md" onClick={() => loadMore()}>Load More</button>}
+      {!loading && (
+        <button
+          className="mx-auto mt-5 cursor-pointer bg-slate-500 p-1 text-lg rounded-md"
+          onClick={() => loadMore()}
+        >
+          Load More
+        </button>
+      )}
     </section>
   );
 };
