@@ -5,19 +5,25 @@ import { usePokemonInfo } from "../hooks/usePokemonInfo.js";
 import { usePokemonSpecies } from "../hooks/usePokemonSpecies.js";
 import Loader from "../components/Loader.jsx";
 import GameIndices from "../components/GameIndices.jsx";
-import { motion } from "framer-motion";
-import { imageAnimation } from "../utils/animation.js";
+import { BasicPokemonInfo } from "../components/BasicPokemonInfo.jsx";
 
 export const PokemonInfo = () => {
   const { id, name } = useParams();
   const { pokemon, loading, error } = usePokemonInfo(name);
-  const {pokemonSpecies, loadingSpecies, errorSpecies} = usePokemonSpecies(pokemon?.species.url)
+  const { pokemonSpecies, loadingSpecies, errorSpecies } = usePokemonSpecies(
+    pokemon?.species.url
+  );
   const [selectedGameIndex, setSelectedGameIndex] = useState();
 
   useEffect(() => {
     document.title = `${name}`;
   }, [name, id]);
 
+  useEffect(() => {
+    if (pokemon && pokemonSpecies) {
+      setSelectedGameIndex(pokemon.game_indices[0]?.version.name || pokemonSpecies.flavor_text_entries[0]?.version.name)
+    }
+  }, [pokemon, pokemonSpecies, id, name])
 
   if (loading || loadingSpecies)
     return (
@@ -35,33 +41,28 @@ export const PokemonInfo = () => {
 
   return (
     <>
-      <header>
+      <header className="p-3 px-10 bg-slate-950 flex justify-between">
+        <div className="text-[2rem]">
+          <h1>
+            PokeDex
+          </h1>
+        </div>
         <div>
           <GameIndices
             gameIndices={[
               ...(pokemon.game_indices || []),
-              ...(pokemonSpecies.flavor_text_entries || [])
+              ...(pokemonSpecies.flavor_text_entries || []),
             ]}
             selected={selectedGameIndex}
             setSelectedGameIndex={setSelectedGameIndex}
           />
         </div>
       </header>
-      <main className="p-10">
-        <div>
-          <motion.img
-            initial={imageAnimation.initial}
-            animate={imageAnimation.animate}
-            transition={{
-              delay: 0.4,
-            }}
-            loading="lazy"
-            src={
-              pokemon?.sprites.other["official-artwork"]["front_default"]
-            }
-            alt={pokemon.name}
-          />
-        </div>
+      <main className="p-8">
+        <BasicPokemonInfo
+          data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies }}
+          gameVersion={selectedGameIndex}
+        />
       </main>
     </>
   );

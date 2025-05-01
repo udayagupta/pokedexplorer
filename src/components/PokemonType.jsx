@@ -9,7 +9,7 @@ const PokemonType = ({ type, with_text }) => {
       {with_text && <p className="capitalize sm:text-md md:text-lg lg:text-lg xl:text-xl">{type}</p>}
       <img
         className="h-[30px] w-[30px]"
-        src={`./types/${type}.png`}
+        src={`/types/${type}.png`}
         alt={type}
       />
     </div>
