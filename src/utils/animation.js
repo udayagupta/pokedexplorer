@@ -51,3 +51,14 @@ export const sectionAnimation = {
         }
     }
 }
+
+export const tableAnimation = {
+    initial: {
+        scaleX: 0,
+        opacity: 0
+    },
+    animate: {
+        scaleX: 1,
+        opacity: 1,
+    }
+}

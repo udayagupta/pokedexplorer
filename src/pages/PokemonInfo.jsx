@@ -5,7 +5,9 @@ import { usePokemonInfo } from "../hooks/usePokemonInfo.js";
 import { usePokemonSpecies } from "../hooks/usePokemonSpecies.js";
 import Loader from "../components/Loader.jsx";
 import GameIndices from "../components/GameIndices.jsx";
-import { BasicPokemonInfo } from "../components/BasicPokemonInfo.jsx";
+import { BasicPokemonInfo } from "../components/BasicInfoPokemon/BasicPokemonInfo.jsx";
+import  SearchBox  from "../components/SearchBox/SearchBox.jsx"
+import { AbilitiesSection } from "../components/AbilitiesSection.jsx";
 
 export const PokemonInfo = () => {
   const { id, name } = useParams();
@@ -21,9 +23,12 @@ export const PokemonInfo = () => {
 
   useEffect(() => {
     if (pokemon && pokemonSpecies) {
-      setSelectedGameIndex(pokemon.game_indices[0]?.version.name || pokemonSpecies.flavor_text_entries[0]?.version.name)
+      setSelectedGameIndex(
+        pokemon.game_indices[0]?.version.name ||
+          pokemonSpecies.flavor_text_entries[0]?.version.name
+      );
     }
-  }, [pokemon, pokemonSpecies, id, name])
+  }, [pokemon, pokemonSpecies, id, name]);
 
   if (loading || loadingSpecies)
     return (
@@ -41,13 +46,16 @@ export const PokemonInfo = () => {
 
   return (
     <>
-      <header className="p-3 px-10 bg-slate-950 flex justify-between">
-        <div className="text-[2rem]">
-          <h1>
-            PokeDex
-          </h1>
+      <header className="p-3 px-10 bg-slate-950 flex items-center justify-between">
+        <div className="text-[2.3rem]">
+          <h1 style={{fontFamily: "Pokemon Solid"}}>PokeDex</h1>
         </div>
         <div>
+          <SearchBox />
+        </div>
+      </header>
+      <main className="p-8" style={{fontFamily: "Poppins, sans-serif"}}>
+        <div style={{fontFamily: "Jockey One"}}>
           <GameIndices
             gameIndices={[
               ...(pokemon.game_indices || []),
@@ -57,12 +65,11 @@ export const PokemonInfo = () => {
             setSelectedGameIndex={setSelectedGameIndex}
           />
         </div>
-      </header>
-      <main className="p-8">
         <BasicPokemonInfo
           data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies }}
           gameVersion={selectedGameIndex}
         />
+        <AbilitiesSection />
       </main>
     </>
   );
