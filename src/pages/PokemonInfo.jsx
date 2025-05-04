@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { data, useParams } from "react-router-dom";
 import "./../styles/PokemonInfo.css";
 import { usePokemonInfo } from "../hooks/usePokemonInfo.js";
 import { usePokemonSpecies } from "../hooks/usePokemonSpecies.js";
@@ -69,7 +69,6 @@ export const PokemonInfo = () => {
           data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies }}
           gameVersion={selectedGameIndex}
         />
-        <AbilitiesSection />
       </main>
     </>
   );

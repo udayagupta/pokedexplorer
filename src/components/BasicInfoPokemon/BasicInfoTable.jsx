@@ -2,7 +2,8 @@ import React from "react";
 import PokemonType from "../PokemonType";
 import { TableRow } from "../CustomTable/TableRow";
 import { Table } from "../CustomTable/Table";
-import { PiSpeakerHigh } from "react-icons/pi";
+import PokemonCries from "./PokemonCries";
+import { AbilitiesSection } from "../AbilitiesSection";
 
 const PokemonTypes = ({ types }) => {
   return (
@@ -18,7 +19,7 @@ const PokemonTypes = ({ types }) => {
   );
 };
 
-const BasicInfoTable = ({ data }) => {
+const BasicInfoTable = ({ data, gameVersion }) => {
   return (
     <Table>
       <TableRow
@@ -63,28 +64,12 @@ const BasicInfoTable = ({ data }) => {
         title={"Types"}
         value={<PokemonTypes types={data.pokemon.types} />}
       />
+      <TableRow
+        title={"Abilities"}
+        value={<AbilitiesSection data={data.pokemon.abilities} gameVersion={gameVersion}/>}
+      />
       {data.pokemon.cries && (
-        <TableRow
-          title={"Cries"}
-          value={
-            <ul className="flex gap-3">
-              {Object.keys(data.pokemon.cries).map((key, index) => (
-                <li
-                  key={index}
-                  className="capitalize rounded-[100vw] bg-slate-900 flex gap-4 hover:bg-slate-800 p-[5px] px-3 cursor-pointer items-center justify-center"
-                >
-                  <button
-                    className="flex text-sm font-semibold h-full w-full cursor-pointer items-center gap-2 justify-center "
-                    onClick={() => new Audio(data.pokemon.cries[key]).play()}
-                  >
-                    <PiSpeakerHigh />
-                    <span className="capitalize">{key} cry</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          }
-        />
+        <TableRow title={"Cries"} value={<PokemonCries cries={data.pokemon.cries} />} />
       )}
     </Table>
   );

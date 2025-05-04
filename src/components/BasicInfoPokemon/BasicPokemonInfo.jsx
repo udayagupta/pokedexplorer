@@ -57,7 +57,7 @@ export const BasicPokemonInfo = ({ data, gameVersion }) => {
         className="flex-1 flex flex-col rounded-md bg-slate-950d px-5 p-5"
       >
         <PokemonDescription data={data} gameVersion={gameVersion} />
-        <BasicInfoTable data={data} />
+        <BasicInfoTable data={data} gameVersion={gameVersion}/>
       </motion.section>
       <motion.section
         initial={sectionAnimation.fromTop.initial}
