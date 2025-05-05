@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { Table } from "./CustomTable/Table";
 import { usePokemonAbilities } from "../hooks/usePokemonAbilities";
 import Loader from "./Loader"
 
-export const AbilitiesSection = ({ data, gameVersion }) => {
+export const AbilitiesSection = ({ data }) => {
   const { abilitiesData, abilitiesLoading, error } = usePokemonAbilities(data)
 
   useEffect(() => {
@@ -11,6 +10,7 @@ export const AbilitiesSection = ({ data, gameVersion }) => {
   }, [abilitiesLoading])
 
   if (abilitiesLoading) return (<div><Loader /></div>)
+  if (error) return (<p className="text-sm">Error finding the data</p>)
 
   return (
     <ul className="flex flex-col gap-3">

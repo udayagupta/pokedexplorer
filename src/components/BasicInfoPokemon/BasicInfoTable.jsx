@@ -11,7 +11,7 @@ const PokemonTypes = ({ types }) => {
       <ul className="flex gap-4">
         {types.map((type, index) => (
           <li key={index}>
-            <PokemonType type={type.type.name} with_text={true} />
+            <PokemonType type={type.type.name} with_text={false} />
           </li>
         ))}
       </ul>
@@ -19,7 +19,7 @@ const PokemonTypes = ({ types }) => {
   );
 };
 
-const BasicInfoTable = ({ data, gameVersion }) => {
+const BasicInfoTable = ({ data }) => {
   return (
     <Table>
       <TableRow
@@ -66,7 +66,7 @@ const BasicInfoTable = ({ data, gameVersion }) => {
       />
       <TableRow
         title={"Abilities"}
-        value={<AbilitiesSection data={data.pokemon.abilities} gameVersion={gameVersion}/>}
+        value={<AbilitiesSection data={data.pokemon.abilities}/>}
       />
       {data.pokemon.cries && (
         <TableRow title={"Cries"} value={<PokemonCries cries={data.pokemon.cries} />} />
