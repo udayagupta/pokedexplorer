@@ -9,20 +9,29 @@ const TrainingSection = ({ data }) => {
         (item) => item.version.name === data.gameVersion
       )
     );
-
+    console.log(filteredItems);
     return filteredItems.length > 0 ? filteredItems : null;
   };
 
   const GetHeldItems = ({ items }) => {
     const filteredItems = heldItems(items);
     return filteredItems ? (
-      <ul className="flex flex-col">
+      <ul className="flex flex-col gap-2">
         {filteredItems.map((item, index) => (
           <li
-            className="border flex  gap-2 justify-center items-center font-semibold text-sm p-1 px-4 rounded-md capitalize text-center"
+            className="border flex  gap-2 justify-center items-center flex-1 font-semibold text-md p-1 px-4 rounded-md capitalize text-center"
             key={index}
           >
-            <span>{item.item.name.split("-").join(" ")}</span>
+            <p className="flex flex-col">
+              <span>{item.item.name.split("-").join(" ")}</span>
+              <span className="font-light text-sm">
+                ({
+                  item.version_details.find(
+                    (version) => version.version.name === data.gameVersion
+                  ).rarity
+                }% Chance)
+              </span>
+            </p>
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${item.item.name}.png`}
               alt={item.item.name}
@@ -55,10 +64,6 @@ const TrainingSection = ({ data }) => {
       <p>None</p>
     );
   };
-
-  useEffect(() => {
-    console.log(data.pokemon.stats);
-  });
 
   return (
     <section className="w-full flex flex-col gap-2 p-3  rounded-md">

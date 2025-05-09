@@ -5,9 +5,6 @@ import Loader from "./Loader"
 export const AbilitiesSection = ({ data }) => {
   const { abilitiesData, abilitiesLoading, error } = usePokemonAbilities(data)
 
-  useEffect(() => {
-    console.log(abilitiesData)
-  }, [abilitiesLoading])
 
   if (abilitiesLoading) return (<div><Loader /></div>)
   if (error) return (<p className="text-sm">Error finding the data</p>)

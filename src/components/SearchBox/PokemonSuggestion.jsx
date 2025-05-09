@@ -20,7 +20,7 @@ const PokemonSuggestion = ({ name }) => {
     );
 
   return (
-    <Link to={`/pokemon/${pokemon.id}/${pokemon.name}`}>
+    <Link to={`/pokemon/${pokemon.name}`}>
       <div className="flex justify-between items-center cursor-pointer p-2 hover:bg-blue-950">
       <div className="flex justify-center items-center gap-3">
         <img

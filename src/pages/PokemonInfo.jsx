@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { data, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./../styles/PokemonInfo.css";
 import { usePokemonInfo } from "../hooks/usePokemonInfo.js";
 import { usePokemonSpecies } from "../hooks/usePokemonSpecies.js";
@@ -7,12 +7,12 @@ import Loader from "../components/Loader.jsx";
 import GameIndices from "../components/GameIndices.jsx";
 import { BasicPokemonInfo } from "../components/BasicInfoPokemon/BasicPokemonInfo.jsx";
 import SearchBox from "../components/SearchBox/SearchBox.jsx";
-import { AbilitiesSection } from "../components/AbilitiesSection.jsx";
 import BreedingSection from "../components/BreedingSection.jsx";
 import TrainingSection from "../components/TrainingSection.jsx";
+import PokemonNavigation from "../components/PokemonNavigation.jsx";
 
 export const PokemonInfo = () => {
-  const { id, name } = useParams();
+  const { name } = useParams();
   const { pokemon, loading, error } = usePokemonInfo(name);
   const { pokemonSpecies, loadingSpecies, errorSpecies } = usePokemonSpecies(
     pokemon?.species.url
@@ -21,7 +21,7 @@ export const PokemonInfo = () => {
 
   useEffect(() => {
     document.title = `${name}`;
-  }, [name, id]);
+  }, [name]);
 
   useEffect(() => {
     if (pokemon && pokemonSpecies) {
@@ -30,7 +30,7 @@ export const PokemonInfo = () => {
           pokemonSpecies.flavor_text_entries[0]?.version.name
       );
     }
-  }, [pokemon, pokemonSpecies, id, name]);
+  }, [pokemon, pokemonSpecies, name]);
 
   if (loading || loadingSpecies)
     return (
@@ -79,6 +79,7 @@ export const PokemonInfo = () => {
             data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies, gameVersion: selectedGameIndex }}
           />
         </div>
+        <PokemonNavigation id={pokemon.id}/>
       </main>
     </>
   );
