@@ -31,7 +31,7 @@ const PokemonCard = ({ name }) => {
         scale: { type: "tween" },
       }}
     >
-      <Link to={`/pokemon/${pokemon.id}/${pokemon.name}`}>
+      <Link to={`/pokemon/${pokemon.name}`}>
         <div className="pokemon-card bg-slate-800 h-[300px] w-[180px] p-4 flex flex-col gap-3 justify-center items-center rounded-lg">
           <div className="">
             <motion.img
@@ -50,7 +50,7 @@ const PokemonCard = ({ name }) => {
             />
           </div>
           <div className="text-center  capitalize text-2xl">
-            <h3>{pokemon.name}</h3>
+            <h3>{pokemon.name.split("-").join(" ")}</h3>
           </div>
           <div className="text-3xl"># {pokemon.id}</div>
           <div className="pokemon-types  flex gap-3 justify-center">

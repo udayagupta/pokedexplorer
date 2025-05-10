@@ -10,6 +10,8 @@ import SearchBox from "../components/SearchBox/SearchBox.jsx";
 import BreedingSection from "../components/BreedingSection.jsx";
 import TrainingSection from "../components/TrainingSection.jsx";
 import PokemonNavigation from "../components/PokemonNavigation.jsx";
+import { usePokemonEvolution } from "../hooks/usePokemonEvolution.js";
+import PokemonEvolution from "../components/PokemonEvolution/PokemonEvolution.jsx";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
@@ -17,11 +19,12 @@ export const PokemonInfo = () => {
   const { pokemonSpecies, loadingSpecies, errorSpecies } = usePokemonSpecies(
     pokemon?.species.url
   );
+  // const evolution = usePokemonEvolution(pokemonSpecies?.evolution_chain.url)
   const [selectedGameIndex, setSelectedGameIndex] = useState();
 
   useEffect(() => {
-    document.title = `${name}`;
-  }, [name]);
+    document.title = `${pokemonSpecies?.names?.find(item => item.language.name === "en").name} | Pokemon`;
+  }, [name, pokemonSpecies]);
 
   useEffect(() => {
     if (pokemon && pokemonSpecies) {
@@ -79,6 +82,7 @@ export const PokemonInfo = () => {
             data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies, gameVersion: selectedGameIndex }}
           />
         </div>
+        <PokemonEvolution url={pokemonSpecies.evolution_chain.url}/>
         <PokemonNavigation id={pokemon.id}/>
       </main>
     </>

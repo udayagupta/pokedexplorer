@@ -9,7 +9,6 @@ const TrainingSection = ({ data }) => {
         (item) => item.version.name === data.gameVersion
       )
     );
-    console.log(filteredItems);
     return filteredItems.length > 0 ? filteredItems : null;
   };
 

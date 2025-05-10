@@ -25,7 +25,7 @@ const PokemonDescription = ({ data, gameVersion }) => {
   return (
     <div className="text-left mb-3">
       <div className="flex items-center gap-5">
-        <h3 className="text-5xl capitalize">{data.pokemon.name}</h3>
+        <h3 className="text-5xl capitalize">{data.pokemonSpecies.names.find(item => item.language.name === "en").name}</h3>
         <div className="flex gap-5 my-2">
           {data.pokemonSpecies.is_mythical && (
             <p className="bg-purple-600 text-sm max-h-max p-1 px-2 rounded-md">Mythical</p>
