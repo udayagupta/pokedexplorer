@@ -2,7 +2,7 @@ import React from "react";
 
 export const TableRow = ({ title, value, ...props }) => {
     return (
-      <tr className={`border-b border-slate-700 ${props.className}`}>
+      <tr className={`custom-table-row border-b border-slate-700 ${props.className}`}>
         <th className="text-left px-4 py-2 bg-slate-800 text-slate-200 font-semibold w-1/2">
           {title}
         </th>

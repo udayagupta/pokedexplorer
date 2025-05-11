@@ -78,8 +78,8 @@ const BreedingSection = ({ data }) => {
   };
 
   return (
-    <section className=" flex flex-col gap-2 p-3 w-full rounded-md">
-      <div className="font-semibold bg-slate-800 text-lg p-1 rounded-md text-center">
+    <section className=" flex flex-col gap-2 w-full info-section rounded-md">
+      <div className="font-semibold bg-slate-800 section-heading text-lg p-1 rounded-md text-center">
         <h3>Breeding</h3>
       </div>
       <div className="capitalize">

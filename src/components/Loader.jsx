@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Loader = () => {
+const Loader = ({size="50px"}) => {
   return (
     <div className='loader max-w-max max-h-max'>
-        <img src="/pokeball.png" className='h-[50px] w-[50px] mx-auto' alt="pokeball loader" />
+        <img src="/pokeball.png" className={`h-[${size}] w-[${size}] mx-auto`} alt="pokeball loader" />
     </div>
   )
 }

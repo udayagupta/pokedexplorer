@@ -1,6 +1,8 @@
 import React from "react";
 import { tableAnimation } from "../../utils/animation.js";
 import { motion } from "framer-motion"
+import "../../styles/PokemonInfo.css";
+
 
 export const Table = ({ children, ...props }) => {
   return (
@@ -8,7 +10,7 @@ export const Table = ({ children, ...props }) => {
       initial={tableAnimation.initial}
       animate={tableAnimation.animate}
       transition={{ delay: 0.5 }}
-      className={`table-auto w-full border border-slate-700 rounded-lg overflow-hidden ${props.className}`}
+      className={`custom-table table-auto w-full border border-slate-700 rounded-lg overflow-hidden ${props.className}`}
     >
       <tbody>
         {children}

@@ -1,9 +1,9 @@
-import React from "react";
 import PokemonType from "../PokemonType";
 import { TableRow } from "../CustomTable/TableRow";
 import { Table } from "../CustomTable/Table";
 import PokemonCries from "./PokemonCries";
 import { AbilitiesSection } from "../AbilitiesSection";
+
 
 const PokemonTypes = ({ types }) => {
   return (

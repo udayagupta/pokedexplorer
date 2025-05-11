@@ -6,7 +6,7 @@ export const AbilitiesSection = ({ data }) => {
   const { abilitiesData, abilitiesLoading, error } = usePokemonAbilities(data)
 
 
-  if (abilitiesLoading) return (<div><Loader /></div>)
+  if (abilitiesLoading) return (<div className="flex justify-center"><Loader size="30px" /></div>)
   if (error) return (<p className="text-sm">Error finding the data</p>)
 
   return (

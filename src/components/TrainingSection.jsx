@@ -65,8 +65,8 @@ const TrainingSection = ({ data }) => {
   };
 
   return (
-    <section className="w-full flex flex-col gap-2 p-3  rounded-md">
-      <div className="font-semibold bg-slate-800 text-lg p-1 rounded-md text-center">
+    <section className="w-full flex flex-col gap-2 info-section rounded-md">
+      <div className="font-semibold section-heading bg-slate-800 text-lg p-1 rounded-md text-center">
         <h3>Training</h3>
       </div>
       <Table>

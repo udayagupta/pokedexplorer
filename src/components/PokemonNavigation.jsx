@@ -35,13 +35,14 @@ const PokemonNavigation = ({ id }) => {
   if (error) return <p>Erro</p>;
 
   return (
-    <section className="flex justify-center items-center gap-2">
+    <section className="flex justify-center pokemon-navigation items-center gap-2">
       {id > 1 && (
         <Link to={`/pokemon/${previous.pokemon?.name}`}>
           <motion.div
             initial={{ translateX: 0 }}
             whileHover={{ translateX: -5, cursor: "pointer" }}
             className="bg-slate-950 flex max-w-max gap-5 pl-2 rounded-l-lg overflow-hidden"
+            title={previous.pokemon?.name.split("-").join(" ")}
           >
             <div>
               <img
@@ -56,7 +57,7 @@ const PokemonNavigation = ({ id }) => {
             </div>
             <div className="flex flex-col justify-center items-center">
               <p className="text-2xl">#{previous.pokemon?.id}</p>
-              <p className="text-lg capitalize">
+              <p className="text-lg capitalize max-w-[90px] overflow-hidden overflow-ellipsis whitespace-nowrap">
                 {previous.pokemon?.name.split("-").join(" ")}
               </p>
             </div>
@@ -75,6 +76,7 @@ const PokemonNavigation = ({ id }) => {
             initial={{ translateX: 0 }}
             whileHover={{ translateX: 5, cursor: "pointer" }}
             className="bg-slate-950 flex max-w-max gap-5 pr-2 rounded-r-lg"
+            title={next.pokemon?.name.split("-").join(" ")}
           >
             <div className="flex flex-col justify-evenly items-center p-1 bg-orange-600 font-bold text-slate-950">
               <span>N</span>
@@ -84,7 +86,7 @@ const PokemonNavigation = ({ id }) => {
             </div>
             <div className="flex flex-col justify-center items-center">
               <p className="text-2xl">#{next.pokemon?.id}</p>
-              <p className="text-lg capitalize">
+              <p className="text-lg capitalize max-w-[90px] overflow-hidden overflow-ellipsis whitespace-nowrap">
                 {next.pokemon?.name.split("-").join(" ")}
               </p>
             </div>

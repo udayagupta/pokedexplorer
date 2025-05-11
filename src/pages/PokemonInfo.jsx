@@ -10,7 +10,6 @@ import SearchBox from "../components/SearchBox/SearchBox.jsx";
 import BreedingSection from "../components/BreedingSection.jsx";
 import TrainingSection from "../components/TrainingSection.jsx";
 import PokemonNavigation from "../components/PokemonNavigation.jsx";
-import { usePokemonEvolution } from "../hooks/usePokemonEvolution.js";
 import PokemonEvolution from "../components/PokemonEvolution/PokemonEvolution.jsx";
 
 export const PokemonInfo = () => {
@@ -19,7 +18,6 @@ export const PokemonInfo = () => {
   const { pokemonSpecies, loadingSpecies, errorSpecies } = usePokemonSpecies(
     pokemon?.species.url
   );
-  // const evolution = usePokemonEvolution(pokemonSpecies?.evolution_chain.url)
   const [selectedGameIndex, setSelectedGameIndex] = useState();
 
   useEffect(() => {
@@ -59,7 +57,7 @@ export const PokemonInfo = () => {
           <SearchBox />
         </div>
       </header>
-      <main className="p-8" style={{ fontFamily: "Poppins, sans-serif" }}>
+      <main className="flex flex-col gap-5" style={{ fontFamily: "Poppins, sans-serif" }}>
         <div style={{ fontFamily: "Jockey One" }}>
           <GameIndices
             gameIndices={[
@@ -74,7 +72,7 @@ export const PokemonInfo = () => {
           data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies }}
           gameVersion={selectedGameIndex}
         />
-        <div className="flex">
+        <div className="flex info-sections gap-4">
           <BreedingSection
             data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies }}
           />

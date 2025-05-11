@@ -1,7 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { imageAnimation, sectionAnimation } from "../../utils/animation";
 import BasicInfoTable from "./BasicInfoTable";
+import "../../styles/PokemonInfo.css";
 
 const PokemonDescription = ({ data, gameVersion }) => {
   const flavorText =
@@ -24,8 +24,8 @@ const PokemonDescription = ({ data, gameVersion }) => {
 
   return (
     <div className="text-left mb-3">
-      <div className="flex items-center gap-5">
-        <h3 className="text-5xl capitalize">{data.pokemonSpecies.names.find(item => item.language.name === "en").name}</h3>
+      <div className="flex items-center pokemon-name-and-tags gap-5">
+        <h3 className="text-5xl capitalize pokemon-name">{data.pokemonSpecies.names.find(item => item.language.name === "en").name}</h3>
         <div className="flex gap-5 my-2">
           {data.pokemonSpecies.is_mythical && (
             <p className="bg-purple-600 text-sm max-h-max p-1 px-2 rounded-md">Mythical</p>
@@ -35,7 +35,7 @@ const PokemonDescription = ({ data, gameVersion }) => {
           )}
         </div>
       </div>
-      <p className="text-xl my-3 ">
+      <p className="text-xl my-3 pokemon-description">
         {flavorText || effectEntry || "Description for this version not found!"}
       </p>
     </div>
@@ -45,7 +45,7 @@ const PokemonDescription = ({ data, gameVersion }) => {
 export const BasicPokemonInfo = ({ data, gameVersion }) => {
   return (
     <div
-      className="flex gap-5 justify-evenly"
+      className="flex gap-5 basic-info-section justify-evenly"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <motion.section
@@ -54,7 +54,7 @@ export const BasicPokemonInfo = ({ data, gameVersion }) => {
         transition={{
           duration: 0.4,
         }}
-        className="flex-1 flex flex-col rounded-md bg-slate-950d px-5 p-5"
+        className="flex-1 flex flex-col  rounded-md bg-slate-950d"
       >
         <PokemonDescription data={data} gameVersion={gameVersion} />
         <BasicInfoTable data={data}/>
