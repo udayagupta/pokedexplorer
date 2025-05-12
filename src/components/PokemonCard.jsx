@@ -12,7 +12,7 @@ const PokemonCard = ({ name }) => {
   if (loading)
     return (
       <div className="h-[300px] rounded-lg w-[180px] flex justify-center items-center">
-        <Loader />
+        <Loader size="50px"/>
       </div>
     );
   if (error)

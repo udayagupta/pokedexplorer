@@ -11,6 +11,7 @@ import BreedingSection from "../components/BreedingSection.jsx";
 import TrainingSection from "../components/TrainingSection.jsx";
 import PokemonNavigation from "../components/PokemonNavigation.jsx";
 import PokemonEvolution from "../components/PokemonEvolution/PokemonEvolution.jsx";
+import FormsSection from "../components/FormsSection.jsx";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
@@ -36,7 +37,7 @@ export const PokemonInfo = () => {
   if (loading || loadingSpecies)
     return (
       <div className=" flex justify-center items-center h-screen w-screen">
-        <Loader />
+        <Loader size={"50px"}/>
       </div>
     );
 
@@ -69,16 +70,17 @@ export const PokemonInfo = () => {
           />
         </div>
         <BasicPokemonInfo
-          data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies }}
+          data={{ pokemon, pokemonSpecies }}
           gameVersion={selectedGameIndex}
         />
         <div className="flex info-sections gap-4">
           <BreedingSection
-            data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies }}
+            data={{ pokemon, pokemonSpecies }}
           />
           <TrainingSection
-            data={{ pokemon: pokemon, pokemonSpecies: pokemonSpecies, gameVersion: selectedGameIndex }}
+            data={{ pokemon, pokemonSpecies, gameVersion: selectedGameIndex }}
           />
+          <FormsSection  data={{ pokemonSpecies, name: pokemon.name }}/>
         </div>
         <PokemonEvolution url={pokemonSpecies.evolution_chain.url}/>
         <PokemonNavigation id={pokemon.id}/>

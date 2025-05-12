@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Table } from "./CustomTable/Table";
 import { TableRow } from "./CustomTable/TableRow";
+import Heading from "./Heading";
 
 const TrainingSection = ({ data }) => {
   const heldItems = (items) => {
@@ -66,9 +67,7 @@ const TrainingSection = ({ data }) => {
 
   return (
     <section className="w-full flex flex-col gap-2 info-section rounded-md">
-      <div className="font-semibold section-heading bg-slate-800 text-lg p-1 rounded-md text-center">
-        <h3>Training</h3>
-      </div>
+      <Heading title={"Training"}/>
       <Table>
         <TableRow
           title={"Base Experience"}

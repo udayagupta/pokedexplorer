@@ -10,7 +10,7 @@ const PokemonDescription = ({ data, gameVersion }) => {
         (item) =>
           item.language.name === "en" && item.version.name === gameVersion
       )
-      ?.flavor_text.replace(/\\[nf]/g, " ")
+      ?.flavor_text.replace(/[\n\f]/g, " ")
       .trim() || null;
 
   const effectEntry =
@@ -19,7 +19,7 @@ const PokemonDescription = ({ data, gameVersion }) => {
         (item) =>
           item.language.name === "en" && item.version.name === gameVersion
       )
-      ?.effect.replace(/\\[nf]/g, " ")
+      ?.effect.replace(/[\n\f]/g, " ")
       .trim() || null;
 
   return (
@@ -71,6 +71,7 @@ export const BasicPokemonInfo = ({ data, gameVersion }) => {
           <motion.img
             initial={imageAnimation.initial}
             animate={imageAnimation.animate}
+
             transition={{
               delay: 0.4,
             }}

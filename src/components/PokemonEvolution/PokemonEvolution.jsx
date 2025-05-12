@@ -9,7 +9,7 @@ const PokemonEvolution = ({ url }) => {
   if (loading)
     return (
       <div className="w-full h-[500px] flex justify-center items-center p-5">
-        <Loader />
+        <Loader size={"50px"}/>
       </div>
     );
   if (error) return <p>Error</p>;
@@ -20,7 +20,7 @@ const PokemonEvolution = ({ url }) => {
       </div>
       <div
         style={{ fontFamily: "Jockey One" }}
-        className="overflow-x-auto chain flex gap-3 p-3 rounded-md flex-col justify-center items-center mb-3"
+        className="chain flex overflow-x-auto  gap-3 p-3 rounded-md flex-col justify-center items-center mb-3"
       >
         <PokemonCard name={evolutionData.firstStage} />
         <ul className="flex gap-4 overflow-x-auto">

@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "./CustomTable/Table";
 import { TableRow } from "./CustomTable/TableRow";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
+import Heading from "./Heading";
 
 const BreedingSection = ({ data }) => {
   const genderRate = {
@@ -79,9 +80,7 @@ const BreedingSection = ({ data }) => {
 
   return (
     <section className=" flex flex-col gap-2 w-full info-section rounded-md">
-      <div className="font-semibold bg-slate-800 section-heading text-lg p-1 rounded-md text-center">
-        <h3>Breeding</h3>
-      </div>
+      <Heading title={"Breeding"}/>
       <div className="capitalize">
         <Table>
           <TableRow
