@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./../styles/PokemonInfo.css";
 import { usePokemonInfo } from "../hooks/usePokemonInfo.js";
@@ -12,6 +12,7 @@ import TrainingSection from "../components/TrainingSection.jsx";
 import PokemonNavigation from "../components/PokemonNavigation.jsx";
 import PokemonEvolution from "../components/PokemonEvolution/PokemonEvolution.jsx";
 import FormsSection from "../components/FormsSection.jsx";
+import LocationSection from "../components/LocationSection/LocationSection.jsx";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
@@ -83,7 +84,9 @@ export const PokemonInfo = () => {
           <FormsSection  data={{ pokemonSpecies, name: pokemon.name }}/>
         </div>
         <PokemonEvolution url={pokemonSpecies.evolution_chain.url}/>
+        <LocationSection url={pokemon.location_area_encounters} gameVersion={selectedGameIndex}/>
         <PokemonNavigation id={pokemon.id}/>
+            
       </main>
     </>
   );

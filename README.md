@@ -1,4 +1,4 @@
-# Pokedex
+# Pokedexplorer
 
 A basic Pokedex application built with React and Vite, fetching data from the PokeAPI.
 

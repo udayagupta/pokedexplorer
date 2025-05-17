@@ -4,7 +4,6 @@ export const cleanEvolutionData = (data) => {
     secondStage: [],
     thirdStage: [],
   };
-  console.log(data.chain)
   if (data.evolves_to.length > 0 && data.evolves_to) {
     data.evolves_to.map((item) => {
       const secondStagePokemon = {
@@ -30,7 +29,5 @@ export const cleanEvolutionData = (data) => {
     });
 
   }
-
-  console.log(cleanData)
   return cleanData;
 };

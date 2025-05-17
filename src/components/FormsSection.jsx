@@ -1,4 +1,3 @@
-import React from "react";
 import { Table } from "./CustomTable/Table";
 import { TableRow } from "./CustomTable/TableRow";
 import Heading from "./Heading";
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 const FormsSection = ({ data }) => {
   const PokemonVarieties = ({ varieties, name }) => {
     return (
-      <ul className="flex flex-col gap-2 text-sm">
+      <ul className="flex flex-col gap-2 text-[14px] font-semibold">
         {varieties.map((item, index) =>
           item.pokemon.name === name ? (
             <li

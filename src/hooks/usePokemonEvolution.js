@@ -11,9 +11,7 @@ export const usePokemonEvolution = (url) => {
     try {
       setLoading(true);
       const response = await axios.get(url);
-      console.log(url)
       const cleanData = cleanEvolutionData(response.data.chain);
-      console.log(cleanData)
       setEvolutionData(cleanData);
       //   return cleanData;
     } catch (error) {

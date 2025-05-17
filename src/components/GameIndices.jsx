@@ -19,7 +19,7 @@ const GameIndices = ({ gameIndices, setSelectedGameIndex, selected }) => {
         Game Version
       </label>
       <select
-        className="text-xl capitalize w-[150px] px-2 py-1 bg-slate-700 rounded-md"
+        className="text-xl capitalize w-[auto] px-2 py-1 bg-slate-700 rounded-md"
         onChange={(e) => handleChange(e)}
         value={selected}
         name="gameIndices"
