@@ -47,6 +47,12 @@ const DisplayPokemon = () => {
     </div>
   )
 
+  if (loading) return (
+    <div className="flex justify-center">
+      <Loader size={"50px"}/>
+    </div>
+  )
+
   return (
     <section className="my-5 flex justify-center flex-col px-9">
       <ul className="pokemon-list flex justify-center gap-8 flex-wrap">
