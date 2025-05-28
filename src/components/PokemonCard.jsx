@@ -9,17 +9,10 @@ import { cardAnimation, imageAnimation } from "../utils/animation";
 const PokemonCard = ({ name }) => {
   const { pokemon, loading, error } = usePokemonInfo(name);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  })
-
   if (loading)
     return (
       <div className="h-[300px] rounded-lg w-[180px] flex justify-center items-center">
-        <Loader size="50px"/>
+        <Loader size="50px" />
       </div>
     );
   if (error)
@@ -28,6 +21,13 @@ const PokemonCard = ({ name }) => {
         <p className="text-3xl">Not Found!</p>
       </div>
     );
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  };
 
   return (
     <motion.div
@@ -38,7 +38,7 @@ const PokemonCard = ({ name }) => {
         scale: { type: "tween" },
       }}
     >
-      <Link to={`/pokemon/${pokemon.name}`}>
+      <Link to={`/pokemon/${pokemon.name}`} onClick={scrollToTop}>
         <div className="pokemon-card bg-slate-800 h-[300px] w-[180px] p-4 flex flex-col gap-3 justify-center items-center rounded-lg">
           <div className="">
             <motion.img

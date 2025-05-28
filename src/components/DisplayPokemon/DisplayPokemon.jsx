@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PokemonCard from "../PokemonCard";
 import Loader from "../Loader";
 
@@ -32,8 +32,7 @@ const DisplayPokemon = () => {
         behavior: "smooth",
         top: 300,
       })
-    }, 500)
-    
+    }, 500)    
   };
 
   useEffect(() => {
