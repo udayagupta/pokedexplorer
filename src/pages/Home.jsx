@@ -8,8 +8,8 @@ export const Home = () => {
   return (
     <div className="">
       <header className="p-3 w-full flex flex-col justify-center items-center gap-5">
-        <div className="text-center">
-          <h1 className="text-[4.5rem]">PokeDexplorer</h1>
+        <div className="text-center home-heading" style={{fontFamily: "Pokemon Solid"}}>
+          <h1 className="">PokeDexplorer</h1>
         </div>
         <div className="">
           <SearchBox />

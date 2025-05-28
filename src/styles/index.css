@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Pokemon Hollow';
+    src: url('/src/assets/fonts/Pokemon\ Hollow.ttf');
+}
+
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('/src/assets/fonts/Pokemon\ Solid.ttf');
+}
+
 body {
     color: #ffffff;
     font-family: "Jockey One";
@@ -66,3 +76,18 @@ input:focus {
     animation: loader-animation 1000ms linear infinite;
 }
 
+.home-heading {
+    font-size: 4.5rem;
+}
+
+@media (max-width: 600px) {
+    .home-heading {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .home-heading {
+        font-size: 2.5rem;
+    }
+}

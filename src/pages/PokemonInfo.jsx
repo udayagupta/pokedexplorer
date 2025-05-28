@@ -13,6 +13,7 @@ import PokemonNavigation from "../components/PokemonNavigation.jsx";
 import PokemonEvolution from "../components/PokemonEvolution/PokemonEvolution.jsx";
 import FormsSection from "../components/FormsSection.jsx";
 import LocationSection from "../components/LocationSection/LocationSection.jsx";
+import { Link } from "react-router-dom";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
@@ -53,7 +54,11 @@ export const PokemonInfo = () => {
     <>
       <header className="p-3 px-10 bg-slate-950 flex items-center justify-between">
         <div className="text-[2.3rem]">
-          <h1 style={{ fontFamily: "Pokemon Solid" }}>PokeDex</h1>
+          <h1 style={{ fontFamily: "Pokemon Solid" }}>
+            <Link to={"/"}>
+              PokeDexplorer 
+            </Link>
+          </h1>
         </div>
         <div>
           <SearchBox />
