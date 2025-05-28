@@ -3,7 +3,6 @@ import { usePokemonLocations } from "../../hooks/usePokemonLocations";
 import Loader from "../Loader";
 import { locationAreaEncounter } from "../../utils/locationAreaEncounters";
 import LocationAreaCard from "./LocationAreaCard.jsx";
-import GameIndices from "../GameIndices.jsx"
 
 const LocationSection = ({ url, gameVersion }) => {
   const locationData = usePokemonLocations(url);
@@ -29,9 +28,8 @@ const LocationSection = ({ url, gameVersion }) => {
   return (
     <section>
       <div className="text-center text-2xl my-2 font-semibold">
-        <h3>Location Area Encounters</h3>
+        <h3>Location Area Encounters (in work!)</h3>
       </div>
-      {/* grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 */}
       <ul className="flex gap-5 flex-wrap">
         {locations.length > 0 ? (
           locations?.map((item, index) => (

@@ -2,7 +2,7 @@ import React from "react";
 import { usePokemonInfo } from "../../hooks/usePokemonInfo";
 import { Link } from "react-router-dom";
 
-const PokemonSuggestion = ({ name }) => {
+const PokemonSuggestion = ({ name, clearSuggestions }) => {
   const { pokemon, loading, error } = usePokemonInfo(name);
 
   if (loading)
@@ -20,7 +20,7 @@ const PokemonSuggestion = ({ name }) => {
     );
 
   return (
-    <Link to={`/pokemon/${pokemon.name}`}>
+    <Link onClick={clearSuggestions} to={`/pokemon/${pokemon.name}`}>
       <div className="flex justify-between items-center cursor-pointer p-2 hover:bg-blue-950">
       <div className="flex justify-center items-center gap-3">
         <img

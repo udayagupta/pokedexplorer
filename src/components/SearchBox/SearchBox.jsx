@@ -3,23 +3,25 @@ import React, { useEffect, useState } from "react";
 import PokemonSuggestion from "./PokemonSuggestion";
 
 const SearchBox = () => {
-  const [value, setValue] = useState("")
-  const [data, setData] = useState([])
+  const [value, setValue] = useState("");
+  const [data, setData] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://pokeapi.co/api/v2/pokemon-species?limit=100000&offset=0");
-        setData(response.data.results)
+        const response = await axios.get(
+          "https://pokeapi.co/api/v2/pokemon-species?limit=100000&offset=0"
+        );
+        setData(response.data.results);
       } catch (error) {
         setError(error.message);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (!value) {
@@ -27,15 +29,21 @@ const SearchBox = () => {
       return;
     }
 
-    const newSuggestions = data.filter((item) => (
-      item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
-    ))
+    const newSuggestions = data.filter(
+      (item) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
+    );
     setSuggestions(newSuggestions.slice(0, 5));
-  }, [value])
+  }, [value]);
+
+  // useEffect(() => {
+  //   if (empty_suggestions) {
+  //     setSuggestions([]);
+  //   }
+  // }, [empty_suggestions]);
 
   const handleChange = (event) => {
     setValue(event.target.value);
-  }
+  };
 
   return (
     <div className="relative">
@@ -50,13 +58,11 @@ const SearchBox = () => {
         autoComplete={"off"}
       />
       <ul className="absolute w-full rounded-md mt-2 bg-slate-700 overflow-hidden z-10">
-        {
-          suggestions?.map((item, index) => (
-            <li className="text-xl bg-slate-950" key={index}>
-              <PokemonSuggestion name={item.name}/>
-            </li>
-          ))
-        }
+        {suggestions?.map((item, index) => (
+          <li className="text-xl bg-slate-950" key={index}>
+            <PokemonSuggestion name={item.name} clearSuggestions={() =>{setSuggestions([]); setValue("");}}/>
+          </li>
+        ))}
       </ul>
     </div>
   );

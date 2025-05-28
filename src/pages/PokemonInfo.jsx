@@ -23,7 +23,7 @@ export const PokemonInfo = () => {
   const [selectedGameIndex, setSelectedGameIndex] = useState();
 
   useEffect(() => {
-    document.title = `${pokemonSpecies?.names?.find(item => item.language.name === "en").name} | Pokemon`;
+    document.title = `${pokemonSpecies?.names?.find((item) => item.language.name === "en").name} | Pokemon`;
   }, [name, pokemonSpecies]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const PokemonInfo = () => {
   if (loading || loadingSpecies)
     return (
       <div className=" flex justify-center items-center h-screen w-screen">
-        <Loader size={"50px"}/>
+        <Loader size={"50px"} />
       </div>
     );
 
@@ -59,7 +59,10 @@ export const PokemonInfo = () => {
           <SearchBox />
         </div>
       </header>
-      <main className="flex flex-col gap-5" style={{ fontFamily: "Poppins, sans-serif" }}>
+      <main
+        className="flex flex-col gap-5"
+        style={{ fontFamily: "Poppins, sans-serif" }}
+      >
         <div style={{ fontFamily: "Jockey One" }}>
           <GameIndices
             gameIndices={[
@@ -75,18 +78,24 @@ export const PokemonInfo = () => {
           gameVersion={selectedGameIndex}
         />
         <div className="flex info-sections gap-4">
-          <BreedingSection
-            data={{ pokemon, pokemonSpecies }}
-          />
+          <BreedingSection data={{ pokemon, pokemonSpecies }} />
           <TrainingSection
             data={{ pokemon, pokemonSpecies, gameVersion: selectedGameIndex }}
           />
-          <FormsSection  data={{ pokemonSpecies, name: pokemon.name }}/>
+          <FormsSection data={{ pokemonSpecies, name: pokemon.name }} />
         </div>
-        <PokemonEvolution url={pokemonSpecies.evolution_chain.url}/>
-        <LocationSection url={pokemon.location_area_encounters} gameVersion={selectedGameIndex}/>
-        <PokemonNavigation id={pokemon.id}/>
-            
+        <PokemonEvolution url={pokemonSpecies.evolution_chain.url} />
+        <LocationSection
+          url={pokemon.location_area_encounters}
+          gameVersion={selectedGameIndex}
+        />
+        <PokemonNavigation
+          id={
+            pokemonSpecies.pokedex_numbers.find(
+              (item) => item.pokedex.name === "national"
+            ).entry_number
+          }
+        />
       </main>
     </>
   );

@@ -9,6 +9,13 @@ import { cardAnimation, imageAnimation } from "../utils/animation";
 const PokemonCard = ({ name }) => {
   const { pokemon, loading, error } = usePokemonInfo(name);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  })
+
   if (loading)
     return (
       <div className="h-[300px] rounded-lg w-[180px] flex justify-center items-center">

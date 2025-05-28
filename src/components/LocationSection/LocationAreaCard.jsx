@@ -7,7 +7,7 @@ const LocationAreaCard = ({ item }) => {
       </div>
       <div>
         {item.versionDetails.map((item, index) => (
-          <div key={index} className="flex justify-evenly gap-5 border">
+          <div key={index} className="flex justify-evenly gap-5">
             <div className="flex justify-center items-center">
               {
                 <p className="capitalize">
