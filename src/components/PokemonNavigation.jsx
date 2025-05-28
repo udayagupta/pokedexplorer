@@ -31,13 +31,21 @@ const PokemonNavigation = ({ id }) => {
     fetchMaxId();
   }, [id]);
 
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Erro</p>;
 
   return (
     <section className="flex justify-center pokemon-navigation items-center gap-2">
       {id > 1 && (
-        <Link to={`/pokemon/${previous.pokemon?.name}`}>
+        <Link onClick={scrollToTop} to={`/pokemon/${previous.pokemon?.name}`}>
           <motion.div
             initial={{ translateX: 0 }}
             whileHover={{ translateX: -5, cursor: "pointer" }}
@@ -71,7 +79,7 @@ const PokemonNavigation = ({ id }) => {
         </Link>
       )}
       {id < max && (
-        <Link to={`/pokemon/${next.pokemon?.name}`}>
+        <Link onClick={scrollToTop} to={`/pokemon/${next.pokemon?.name}`}>
           <motion.div
             initial={{ translateX: 0 }}
             whileHover={{ translateX: 5, cursor: "pointer" }}

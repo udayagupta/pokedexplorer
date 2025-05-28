@@ -28,7 +28,7 @@ const LocationSection = ({ url, gameVersion }) => {
   return (
     <section>
       <div className="text-center text-2xl my-2 font-semibold">
-        <h3>Location Area Encounters (in work!)</h3>
+        <h3>Location Area Encounters <span title="in work">⚠️</span></h3>
       </div>
       <ul className="flex gap-5 flex-wrap">
         {locations.length > 0 ? (
