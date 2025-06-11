@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PokemonSuggestion from "./PokemonSuggestion";
 
 const SearchBox = () => {
@@ -35,11 +35,6 @@ const SearchBox = () => {
     setSuggestions(newSuggestions.slice(0, 5));
   }, [value]);
 
-  // useEffect(() => {
-  //   if (empty_suggestions) {
-  //     setSuggestions([]);
-  //   }
-  // }, [empty_suggestions]);
 
   const handleChange = (event) => {
     setValue(event.target.value);

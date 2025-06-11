@@ -79,7 +79,7 @@ const BreedingSection = ({ data }) => {
   };
 
   return (
-    <section className=" flex flex-col gap-2 w-full info-section rounded-md">
+    <section id="breeding-section" className=" flex flex-col gap-2 w-full info-section rounded-md">
       <Heading title={"Breeding"}/>
       <div className="capitalize">
         <Table>

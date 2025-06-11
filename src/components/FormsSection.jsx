@@ -28,7 +28,7 @@ const FormsSection = ({ data }) => {
   };
 
   return (
-    <section className="w-full flex flex-col gap-2">
+    <section id="forms-section" className="w-full flex flex-col gap-2">
       <Heading title={"Forms"} />
       <Table>
         <TableRow

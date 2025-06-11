@@ -55,6 +55,7 @@ export const BasicPokemonInfo = ({ data, gameVersion }) => {
           duration: 0.4,
         }}
         className="flex-1 flex flex-col  rounded-md bg-slate-950d"
+        id="basic-info-section"
       >
         <PokemonDescription data={data} gameVersion={gameVersion} />
         <BasicInfoTable data={data}/>

@@ -66,7 +66,7 @@ const TrainingSection = ({ data }) => {
   };
 
   return (
-    <section className="w-full flex flex-col gap-2 info-section rounded-md">
+    <section id="training-section" className="w-full flex flex-col gap-2 info-section rounded-md">
       <Heading title={"Training"}/>
       <Table>
         <TableRow

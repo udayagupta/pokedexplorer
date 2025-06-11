@@ -92,3 +92,26 @@ main {
     }
 
 }
+
+.page-nav-item {
+    padding-block: 6px;
+}
+
+@media (max-width: 1340px) {
+    .page-nav {
+        font-size: 13px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 870px) {
+    .page-nav {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .page-nav-item {
+        width: max-content;
+        padding: 6px 26px;
+    }
+}

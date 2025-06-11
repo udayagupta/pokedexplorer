@@ -14,6 +14,8 @@ import PokemonEvolution from "../components/PokemonEvolution/PokemonEvolution.js
 import FormsSection from "../components/FormsSection.jsx";
 import LocationSection from "../components/LocationSection/LocationSection.jsx";
 import { Link } from "react-router-dom";
+import { PageNavigation } from "../components/PageNavigation/PageNavigation.jsx";
+import BackToTop from "../components/BackToTop.jsx";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
@@ -52,7 +54,7 @@ export const PokemonInfo = () => {
 
   return (
     <>
-      <header className="p-3 px-10 bg-slate-950 flex items-center justify-between">
+      <header className="p-3 px-10 flex items-center justify-between">
         <div className="text-[2.3rem]">
           <h1 style={{ fontFamily: "Pokemon Solid" }}>
             <Link to={"/"}>
@@ -60,9 +62,7 @@ export const PokemonInfo = () => {
             </Link>
           </h1>
         </div>
-        <div>
           <SearchBox />
-        </div>
       </header>
       <main
         className="flex flex-col gap-5"
@@ -78,6 +78,7 @@ export const PokemonInfo = () => {
             setSelectedGameIndex={setSelectedGameIndex}
           />
         </div>
+          <PageNavigation />
         <BasicPokemonInfo
           data={{ pokemon, pokemonSpecies }}
           gameVersion={selectedGameIndex}
@@ -101,7 +102,10 @@ export const PokemonInfo = () => {
             ).entry_number
           }
         />
+
+        <PageNavigation />
       </main>
+      <BackToTop />
     </>
   );
 };

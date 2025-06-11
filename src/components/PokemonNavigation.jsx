@@ -43,7 +43,7 @@ const PokemonNavigation = ({ id }) => {
   if (error) return <p>Erro</p>;
 
   return (
-    <section className="flex justify-center pokemon-navigation items-center gap-2">
+    <section id="pokemon-nav" className="flex justify-center pokemon-navigation items-center gap-2">
       {id > 1 && (
         <Link onClick={scrollToTop} to={`/pokemon/${previous.pokemon?.name}`}>
           <motion.div

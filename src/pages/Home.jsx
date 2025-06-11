@@ -11,9 +11,7 @@ export const Home = () => {
         <div className="text-center home-heading" style={{fontFamily: "Pokemon Solid"}}>
           <h1 className="">PokeDexplorer</h1>
         </div>
-        <div className="">
-          <SearchBox />
-        </div>
+        <SearchBox />
         <div className="pokemon-types">
           <PokemonTypes />
         </div>

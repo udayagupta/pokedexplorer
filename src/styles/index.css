@@ -15,10 +15,15 @@ body {
     font-family: "Jockey One";
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 input[id="search-pokemon"] {
     padding-inline: 15px;
+}
+
+section {
+    scroll-margin-top: 10px;
 }
 
 

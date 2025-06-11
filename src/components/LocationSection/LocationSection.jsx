@@ -26,7 +26,7 @@ const LocationSection = ({ url, gameVersion }) => {
   if (locationData.error) <div>Error fetching Location Area Encounter</div>;
 
   return (
-    <section>
+    <section id="location-section">
       <div className="text-center text-2xl my-2 font-semibold">
         <h3>Location Area Encounters <span title="in work">⚠️</span></h3>
       </div>

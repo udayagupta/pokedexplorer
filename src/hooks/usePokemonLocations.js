@@ -10,7 +10,7 @@ export const usePokemonLocations = (url) => {
     try {
       setLoading(true);
       const response = await axios.get(url);
-      console.log(response.data)
+      // console.log(response.data)
       setLocations(response.data);
     } catch (error) {
       setError(error?.message);
