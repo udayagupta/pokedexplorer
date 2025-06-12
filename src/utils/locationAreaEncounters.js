@@ -13,6 +13,6 @@ export const locationAreaEncounter = (data, gameVersion) => {
     }
   });
 
-  // console.log(locations)
+  console.log(locations)
   return locations;
 };

@@ -86,9 +86,7 @@ main {
 
     .pokemon-navigation {
         flex-direction: column;
-        width: 100%;
-        /* border: 1px solid; */
-        
+        width: 100%;        
     }
 
 }
@@ -114,4 +112,15 @@ main {
         width: max-content;
         padding: 6px 26px;
     }
+}
+
+.location-area-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.location-area-card {
+    flex-grow: 1;
+    overflow: hidden;
 }

@@ -82,7 +82,7 @@ export const cleanEvolutionData = (data) => {
         evolution_details: item.evolution_details?.[0] || null,
         triggerText: cleanEvolutionDetails(item.evolution_details?.[0]),
       };
-      console.log(secondStagePokemon);
+      // console.log(secondStagePokemon);
 
       cleanData.secondStage.push(secondStagePokemon);
 
@@ -95,7 +95,7 @@ export const cleanEvolutionData = (data) => {
               thirdStage.evolution_details?.[0]
             ),
           };
-          console.log(thirdStagePokemon);
+          // console.log(thirdStagePokemon);
 
           cleanData.thirdStage.push(thirdStagePokemon);
         });

@@ -25,6 +25,18 @@ export const cardAnimation = {
 
 }
 
+export const scaleAnimation = {
+    initial: {
+        scale: 0,
+        opacity: 0,
+    },
+    animate: {
+        scale: 1,
+        opacity: 1,
+    }
+
+}
+
 export const sectionAnimation = {
     fromTop: {
         initial: {
