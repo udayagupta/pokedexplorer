@@ -4,7 +4,7 @@ import { TableRow } from "./CustomTable/TableRow";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
 import Heading from "./Heading";
 
-const BreedingSection = ({ data }) => {
+export const BreedingSection = ({ data }) => {
   const genderRate = {
     0: {
       male: "100%",
@@ -132,5 +132,3 @@ const BreedingSection = ({ data }) => {
     </section>
   );
 };
-
-export default BreedingSection;

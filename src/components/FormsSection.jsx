@@ -3,7 +3,7 @@ import { TableRow } from "./CustomTable/TableRow";
 import Heading from "./Heading";
 import { Link } from "react-router-dom";
 
-const FormsSection = ({ data }) => {
+export const FormsSection = ({ data }) => {
   const PokemonVarieties = ({ varieties, name }) => {
     return (
       <ul className="flex flex-col gap-2 text-[14px] font-semibold">
@@ -52,5 +52,3 @@ const FormsSection = ({ data }) => {
     </section>
   );
 };
-
-export default FormsSection;

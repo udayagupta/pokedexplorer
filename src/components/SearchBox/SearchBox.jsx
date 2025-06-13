@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PokemonSuggestion from "./PokemonSuggestion";
+import { useMemo } from "react";
 
-const SearchBox = () => {
+export const SearchBox = () => {
   const [value, setValue] = useState("");
   const [data, setData] = useState([]);
-  const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -23,17 +23,15 @@ const SearchBox = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (!value) {
-      setSuggestions([]);
-      return;
-    }
 
-    const newSuggestions = data.filter(
-      (item) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
-    );
-    setSuggestions(newSuggestions.slice(0, 5));
-  }, [value]);
+  const suggestions = useMemo(() => {
+    if (!value) return [];
+
+    return data.filter((item) =>
+      item.name.toLowerCase().includes(value.toLowerCase())
+    )
+    .slice(0, 5);
+  }, [value, data]);
 
 
   const handleChange = (event) => {
@@ -55,12 +53,10 @@ const SearchBox = () => {
       <ul className="absolute w-full rounded-md mt-2 bg-slate-700 overflow-hidden z-10">
         {suggestions?.map((item, index) => (
           <li className="text-xl bg-slate-950" key={index}>
-            <PokemonSuggestion name={item.name} clearSuggestions={() =>{setSuggestions([]); setValue("");}}/>
+            <PokemonSuggestion name={item.name} clearSuggestions={() =>{setValue("");}}/>
           </li>
         ))}
       </ul>
     </div>
   );
 };
-
-export default SearchBox;

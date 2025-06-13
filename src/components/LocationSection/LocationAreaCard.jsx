@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { scaleAnimation } from "../../utils/animation";
 
-const LocationAreaCard = ({ item }) => {
+export const LocationAreaCard = ({ item }) => {
   return (
     <motion.div initial={scaleAnimation.initial} animate={scaleAnimation.animate} transition={{duration: 0.5}} className="bg-slate-950 text-sm location-area-card rounded-md w-[200px] min-h-max">
       <div className="bg-slate-700 p-2">
@@ -35,5 +35,3 @@ const LocationAreaCard = ({ item }) => {
     </motion.div>
   );
 };
-
-export default LocationAreaCard;

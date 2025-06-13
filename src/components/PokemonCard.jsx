@@ -1,12 +1,11 @@
-import React, { useEffect, useRef } from "react";
 import { usePokemonInfo } from "../hooks/usePokemonInfo";
-import PokemonType from "./PokemonType";
-import Loader from "./Loader";
+import {PokemonType} from "./PokemonType";
+import { Loader } from "./Loader";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cardAnimation, imageAnimation } from "../utils/animation";
 
-const PokemonCard = ({ name }) => {
+export const PokemonCard = ({ name }) => {
   const { pokemon, loading, error } = usePokemonInfo(name);
 
   if (loading)
@@ -26,7 +25,7 @@ const PokemonCard = ({ name }) => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-    })
+    });
   };
 
   return (
@@ -74,5 +73,3 @@ const PokemonCard = ({ name }) => {
     </motion.div>
   );
 };
-
-export default PokemonCard;

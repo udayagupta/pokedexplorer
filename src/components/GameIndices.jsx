@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameIndices = ({ gameIndices, setSelectedGameIndex, selected }) => {
+export const GameIndices = ({ gameIndices, setSelectedGameIndex, selected }) => {
   const handleChange = (event) => {
     setSelectedGameIndex(event.target.value);
   };
@@ -34,5 +34,3 @@ const GameIndices = ({ gameIndices, setSelectedGameIndex, selected }) => {
     </div>
   );
 };
-
-export default GameIndices;

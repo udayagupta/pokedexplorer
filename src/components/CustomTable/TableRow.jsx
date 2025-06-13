@@ -1,5 +1,3 @@
-import React from "react";
-
 export const TableRow = ({ title, value, ...props }) => {
     return (
       <tr className={`custom-table-row border-b border-slate-700 ${props.className}`}>

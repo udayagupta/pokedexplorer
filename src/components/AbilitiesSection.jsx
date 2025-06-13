@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
 import { usePokemonAbilities } from "../hooks/usePokemonAbilities";
-import Loader from "./Loader"
+import {Loader} from "./Loader"
 
 export const AbilitiesSection = ({ data }) => {
   const { abilitiesData, abilitiesLoading, error } = usePokemonAbilities(data)

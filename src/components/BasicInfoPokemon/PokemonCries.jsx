@@ -1,6 +1,6 @@
 import { PiSpeakerHigh } from "react-icons/pi";
 
-const PokemonCries = ({ cries, className }) => {
+export const PokemonCries = ({ cries, className }) => {
   if (!cries) return null;
 
   return (
@@ -22,5 +22,3 @@ const PokemonCries = ({ cries, className }) => {
     </ul>
   );
 };
-
-export default PokemonCries;

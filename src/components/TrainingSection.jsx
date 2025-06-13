@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
 import { Table } from "./CustomTable/Table";
 import { TableRow } from "./CustomTable/TableRow";
 import Heading from "./Heading";
 
-const TrainingSection = ({ data }) => {
+export const TrainingSection = ({ data }) => {
   const heldItems = (items) => {
     const filteredItems = items.filter((item) =>
       item.version_details.find(
@@ -35,6 +34,7 @@ const TrainingSection = ({ data }) => {
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${item.item.name}.png`}
               alt={item.item.name}
+              
             />
           </li>
         ))}
@@ -93,5 +93,3 @@ const TrainingSection = ({ data }) => {
     </section>
   );
 };
-
-export default TrainingSection;

@@ -1,7 +1,7 @@
 import React from "react";
-import PokemonType from "../PokemonType";
+import { PokemonType } from "../PokemonType";
 
-const PokemonTypes = () => {
+export const PokemonTypes = () => {
   const types = [
     "normal",
     "fighting",
@@ -37,5 +37,3 @@ const PokemonTypes = () => {
     </section>
   );
 };
-
-export default PokemonTypes;

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePokemonLocations } from "../../hooks/usePokemonLocations";
-import Loader from "../Loader";
+import {Loader} from "../Loader";
 import { locationAreaEncounter } from "../../utils/locationAreaEncounters.js";
-import LocationAreaCard from "./LocationAreaCard.jsx";
+import { LocationAreaCard } from "./LocationAreaCard.jsx";
 
 const LOAD_COUNT = 10;
 
-const LocationSection = ({ url, gameVersion }) => {
+export const LocationSection = ({ url, gameVersion }) => {
   const locationData = usePokemonLocations(url);
   const [locations, setLocations] = useState([]);
   const [totalCards, setTotalCards] = useState(LOAD_COUNT);
@@ -61,5 +61,3 @@ const LocationSection = ({ url, gameVersion }) => {
     </section>
   );
 };
-
-export default LocationSection;

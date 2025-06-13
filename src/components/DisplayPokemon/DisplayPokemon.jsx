@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PokemonCard from "../PokemonCard";
-import Loader from "../Loader";
+import { PokemonCard } from "../PokemonCard";
+import { Loader } from "../Loader";
 
-const DisplayPokemon = () => {
+export const DisplayPokemon = () => {
   const limit = 20;
   const [offset, setOffset] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState([]);
@@ -78,5 +78,3 @@ const DisplayPokemon = () => {
     </section>
   );
 };
-
-export default DisplayPokemon;

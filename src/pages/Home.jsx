@@ -1,7 +1,4 @@
-import SearchBox from "../components/SearchBox/SearchBox";
-import PokemonTypes from "../components/PokemonTypes/PokemonTypes";
-import DisplayPokemon from "../components/DisplayPokemon/DisplayPokemon";
-
+import { SearchBox, PokemonTypes, DisplayPokemon } from "../components";
 
 export const Home = () => {
 

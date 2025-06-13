@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
-const BackToTop = () => {
+export const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -34,5 +34,3 @@ const BackToTop = () => {
     )
   );
 };
-
-export default BackToTop;

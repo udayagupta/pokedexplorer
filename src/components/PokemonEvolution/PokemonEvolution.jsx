@@ -1,6 +1,6 @@
-import PokemonCard from "./../PokemonCard";
+import {PokemonCard} from "./../PokemonCard";
 import { FaArrowDown } from "react-icons/fa6";
-import Loader from "../Loader";
+import {Loader} from "../Loader";
 import { usePokemonEvolution } from "../../hooks/usePokemonEvolution";
 
 const TriggerText = ({ triggerText }) => {
@@ -29,7 +29,7 @@ const EvolutionList = ({ list }) => {
   );
 };
 
-const PokemonEvolution = ({ url }) => {
+export const PokemonEvolution = ({ url }) => {
   const { evolutionData, loading, error } = usePokemonEvolution(url);
 
   if (loading)
@@ -64,5 +64,3 @@ const PokemonEvolution = ({ url }) => {
     </section>
   );
 };
-
-export default PokemonEvolution;

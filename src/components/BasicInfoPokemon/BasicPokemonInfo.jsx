@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { imageAnimation, sectionAnimation } from "../../utils/animation";
-import BasicInfoTable from "./BasicInfoTable";
+import { BasicInfoTable } from "./BasicInfoTable";
+
 import "../../styles/PokemonInfo.css";
 
 const PokemonDescription = ({ data, gameVersion }) => {
@@ -42,7 +43,7 @@ const PokemonDescription = ({ data, gameVersion }) => {
   );
 };
 
-export const BasicPokemonInfo = ({ data, gameVersion }) => {
+export const BasicPokemonInfo = ({ data, gameVersion, nationalDexNumber }) => {
   return (
     <div
       className="flex gap-5 basic-info-section justify-evenly"
@@ -58,7 +59,7 @@ export const BasicPokemonInfo = ({ data, gameVersion }) => {
         id="basic-info-section"
       >
         <PokemonDescription data={data} gameVersion={gameVersion} />
-        <BasicInfoTable data={data}/>
+        <BasicInfoTable data={data} nationalPokedex={nationalDexNumber}/>
       </motion.section>
       <motion.section
         initial={sectionAnimation.fromTop.initial}

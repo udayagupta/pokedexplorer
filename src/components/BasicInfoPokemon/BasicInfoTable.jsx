@@ -1,9 +1,8 @@
-import PokemonType from "../PokemonType";
+import {PokemonType} from "../PokemonType";
 import { TableRow } from "../CustomTable/TableRow";
 import { Table } from "../CustomTable/Table";
-import PokemonCries from "./PokemonCries";
+import { PokemonCries } from "./PokemonCries";
 import { AbilitiesSection } from "../AbilitiesSection";
-
 
 const PokemonTypes = ({ types }) => {
   return (
@@ -11,7 +10,7 @@ const PokemonTypes = ({ types }) => {
       <ul className="flex gap-4">
         {types.map((type, index) => (
           <li key={index}>
-            <PokemonType type={type.type.name} with_text={false} />
+            <PokemonType size="40px" type={type.type.name} with_text={false} />
           </li>
         ))}
       </ul>
@@ -19,32 +18,32 @@ const PokemonTypes = ({ types }) => {
   );
 };
 
-const BasicInfoTable = ({ data }) => {
+export const BasicInfoTable = ({ data, nationalPokedex }) => {
+  const weightKg = data.pokemon.weight / 10;
+  const weightLbs = (weightKg * 2.20462).toFixed(2);
+
+  const heightMeters = data.pokemon.height / 10;
+  const heightFeetTotal = heightMeters * 3.28084;
+  const heightFeet = Math.floor(heightFeetTotal);
+  const heightInches = ((heightFeetTotal - heightFeet) * 12).toFixed(0);
+
+  const category = data.pokemonSpecies.genera.find(
+    (item) => item.language.name === "en"
+  ).genus;
+
+  const [prefix, suffix] = data.pokemonSpecies.generation.name.split("-");
+  const generation = `${prefix} ${suffix.toUpperCase()}`;
+
   return (
     <Table>
-      <TableRow
-        title={"Pokedex Number"}
-        value={
-          data.pokemonSpecies.pokedex_numbers.find(
-            (item) => item.pokedex.name === "national"
-          ).entry_number
-        }
-      />
+      <TableRow title={"Pokedex Number"} value={`#${nationalPokedex}`} />
       <TableRow
         title={"Height"}
-        value={`${(data.pokemon.height / 10).toFixed(1)} m`}
+        value={`${heightMeters} m (${heightFeet}' ${heightInches}'')`}
       />
-      <TableRow
-        title={"Weight"}
-        value={`${(data.pokemon.weight / 10).toFixed(1)} kg`}
-      />
-      <TableRow
-        title={"Category"}
-        value={
-          data.pokemonSpecies.genera.find((item) => item.language.name === "en")
-            .genus
-        }
-      />
+      <TableRow title={"Weight"} value={`${weightKg} kg (${weightLbs} lbs)`} />
+
+      <TableRow title={"Category"} value={category} />
       <TableRow
         title={"Color"}
         value={data.pokemonSpecies.color.name}
@@ -58,7 +57,7 @@ const BasicInfoTable = ({ data }) => {
       <TableRow
         title={"Introduced"}
         className="capitalize"
-        value={`${data.pokemonSpecies.generation.name.split("-")[0]} ${data.pokemonSpecies.generation.name.split("-")[1].toUpperCase()}`}
+        value={generation}
       />
       <TableRow
         title={"Types"}
@@ -66,13 +65,15 @@ const BasicInfoTable = ({ data }) => {
       />
       <TableRow
         title={"Abilities"}
-        value={<AbilitiesSection data={data.pokemon.abilities}/>}
+        value={<AbilitiesSection data={data.pokemon.abilities} />}
       />
       {data.pokemon.cries && (
-        <TableRow title={"Cries"} value={<PokemonCries cries={data.pokemon.cries} />} />
+        <TableRow
+          title={"Cries"}
+          value={<PokemonCries cries={data.pokemon.cries} />}
+        />
       )}
     </Table>
   );
 };
 
-export default BasicInfoTable;

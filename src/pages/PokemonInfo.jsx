@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import "./../styles/PokemonInfo.css";
 import { usePokemonInfo } from "../hooks/usePokemonInfo.js";
 import { usePokemonSpecies } from "../hooks/usePokemonSpecies.js";
-import Loader from "../components/Loader.jsx";
-import GameIndices from "../components/GameIndices.jsx";
-import { BasicPokemonInfo } from "../components/BasicInfoPokemon/BasicPokemonInfo.jsx";
-import SearchBox from "../components/SearchBox/SearchBox.jsx";
-import BreedingSection from "../components/BreedingSection.jsx";
-import TrainingSection from "../components/TrainingSection.jsx";
-import PokemonNavigation from "../components/PokemonNavigation.jsx";
-import PokemonEvolution from "../components/PokemonEvolution/PokemonEvolution.jsx";
-import FormsSection from "../components/FormsSection.jsx";
-import LocationSection from "../components/LocationSection/LocationSection.jsx";
 import { Link } from "react-router-dom";
-import { PageNavigation } from "../components/PageNavigation/PageNavigation.jsx";
-import BackToTop from "../components/BackToTop.jsx";
+import {
+  Loader,
+  GameIndices,
+  BasicPokemonInfo,
+  SearchBox,
+  BreedingSection,
+  TrainingSection,
+  FormsSection,
+  PokemonEvolution,
+  LocationSection,
+  PokemonNavigation,
+  PageNavigation,
+  BackToTop,
+} from "../components";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
@@ -26,10 +28,8 @@ export const PokemonInfo = () => {
   const [selectedGameIndex, setSelectedGameIndex] = useState();
 
   useEffect(() => {
-    document.title = `${pokemonSpecies?.names?.find((item) => item.language.name === "en").name} | Pokemon`;
-  }, [name, pokemonSpecies]);
+    document.title = `${pokemonSpecies?.names?.find((item) => item.language.name === "en").name || name} | Pokemon`;
 
-  useEffect(() => {
     if (pokemon && pokemonSpecies) {
       setSelectedGameIndex(
         pokemon.game_indices[0]?.version.name ||
@@ -37,6 +37,22 @@ export const PokemonInfo = () => {
       );
     }
   }, [pokemon, pokemonSpecies, name]);
+
+  const gameIndices = useMemo(
+    () => [
+      ...(pokemon?.game_indices || []),
+      ...(pokemonSpecies?.flavor_text_entries || []),
+    ],
+    [pokemon, pokemonSpecies]
+  );
+
+  const nationalDexNumber = useMemo(() => {
+    return (
+      pokemonSpecies?.pokedex_numbers?.find(
+        (item) => item.pokedex.name === "national"
+      )?.entry_number || null
+    );
+  }, [pokemonSpecies]);
 
   if (loading || loadingSpecies)
     return (
@@ -57,12 +73,10 @@ export const PokemonInfo = () => {
       <header className="p-3 px-10 flex items-center justify-between">
         <div className="text-[2.3rem]">
           <h1 style={{ fontFamily: "Pokemon Solid" }}>
-            <Link to={"/"}>
-              PokeDexplorer 
-            </Link>
+            <Link to={"/"}>PokeDexplorer</Link>
           </h1>
         </div>
-          <SearchBox />
+        <SearchBox />
       </header>
       <main
         className="flex flex-col gap-5"
@@ -70,18 +84,16 @@ export const PokemonInfo = () => {
       >
         <div style={{ fontFamily: "Jockey One" }}>
           <GameIndices
-            gameIndices={[
-              ...(pokemon.game_indices || []),
-              ...(pokemonSpecies.flavor_text_entries || []),
-            ]}
+            gameIndices={gameIndices}
             selected={selectedGameIndex}
             setSelectedGameIndex={setSelectedGameIndex}
           />
         </div>
-          <PageNavigation />
+        <PageNavigation />
         <BasicPokemonInfo
           data={{ pokemon, pokemonSpecies }}
           gameVersion={selectedGameIndex}
+          nationalDexNumber={nationalDexNumber}
         />
         <div className="flex info-sections gap-4">
           <BreedingSection data={{ pokemon, pokemonSpecies }} />
@@ -95,13 +107,7 @@ export const PokemonInfo = () => {
           url={pokemon.location_area_encounters}
           gameVersion={selectedGameIndex}
         />
-        <PokemonNavigation
-          id={
-            pokemonSpecies.pokedex_numbers.find(
-              (item) => item.pokedex.name === "national"
-            ).entry_number
-          }
-        />
+        <PokemonNavigation id={nationalDexNumber} />
 
         <PageNavigation />
       </main>

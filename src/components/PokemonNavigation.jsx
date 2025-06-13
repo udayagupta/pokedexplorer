@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePokemonInfo } from "../hooks/usePokemonInfo";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const PokemonNavigation = ({ id }) => {
+export const PokemonNavigation = ({ id }) => {
   const [loading, setLoading] = useState(true);
   const [max, setMax] = useState(null);
   const [error, setError] = useState(null);
@@ -115,5 +115,3 @@ const PokemonNavigation = ({ id }) => {
     </section>
   );
 };
-
-export default PokemonNavigation;

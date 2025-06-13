@@ -1,6 +1,4 @@
-import React from "react";
-
-const PokemonType = ({ type, with_text }) => {
+export const PokemonType = ({ type, with_text, size="30px" }) => {
   return (
     <div
       title={type}
@@ -9,12 +7,10 @@ const PokemonType = ({ type, with_text }) => {
     >
       {with_text && <p className="capitalize  text-lg">{type}</p>}
       <img
-        className="h-[30px] w-[30px]"
+        style={{height: size, width: size}}
         src={`/types/${type}.png`}
         alt={type}
       />
     </div>
   );
 };
-
-export default PokemonType;
