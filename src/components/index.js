@@ -17,3 +17,4 @@ export { GameIndices } from "./GameIndices";
 export { PokemonCard } from "./PokemonCard";
 export { PokemonNavigation } from "./PokemonNavigation";
 export { PokemonType } from "./PokemonType";
+export { PokemonStats } from "./PokemonStats/PokemonStats"; 

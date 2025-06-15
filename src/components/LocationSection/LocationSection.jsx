@@ -12,6 +12,7 @@ export const LocationSection = ({ url, gameVersion }) => {
   const [totalCards, setTotalCards] = useState(LOAD_COUNT);
 
   useEffect(() => {
+    setTotalCards(LOAD_COUNT);
     const newLocations = locationAreaEncounter(
       locationData.locations,
       gameVersion

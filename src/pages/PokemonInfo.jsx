@@ -17,6 +17,7 @@ import {
   PokemonNavigation,
   PageNavigation,
   BackToTop,
+  PokemonStats
 } from "../components";
 
 export const PokemonInfo = () => {
@@ -102,13 +103,13 @@ export const PokemonInfo = () => {
           />
           <FormsSection data={{ pokemonSpecies, name: pokemon.name }} />
         </div>
+        <PokemonStats baseStats={pokemon.stats}/>
         <PokemonEvolution url={pokemonSpecies.evolution_chain.url} />
         <LocationSection
           url={pokemon.location_area_encounters}
           gameVersion={selectedGameIndex}
         />
         <PokemonNavigation id={nationalDexNumber} />
-
         <PageNavigation />
       </main>
       <BackToTop />

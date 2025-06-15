@@ -23,7 +23,6 @@ export const usePokemonInfo = (name) => {
 
   useEffect(() => {
     if (!name) return;
-    // console.log("Name: ", id);
     fetchPokemon()
   }, [name]);
 

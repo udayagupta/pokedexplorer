@@ -23,7 +23,7 @@ export const LocationAreaCard = ({ item }) => {
             </p>
             {item.encounter_details[0].condition_values.length > 0 && (
               <p>
-                {item.encounter_details[0].condition_values[0].name.replace(
+                Condition: {item.encounter_details[0].condition_values[0].name.replace(
                   /-/g,
                   " "
                 )}

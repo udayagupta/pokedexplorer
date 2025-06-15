@@ -17,7 +17,7 @@ const cleanEvolutionDetails = (evoDetails) => {
   const party_species = evoDetails.party_species?.name;
   const party_type = evoDetails.party_type?.name;
   const relative_physical_stats = evoDetails.relative_physical_stats;
-  const time_of_day = evoDetails.time_of_day.length > 0 ? evoDetails.time_of_day : null;
+  const time_of_day = evoDetails.time_of_day;
   const trade_species = evoDetails.trade_species?.name;
 
   let triggerTexts = [];
@@ -82,7 +82,6 @@ export const cleanEvolutionData = (data) => {
         evolution_details: item.evolution_details?.[0] || null,
         triggerText: cleanEvolutionDetails(item.evolution_details?.[0]),
       };
-      // console.log(secondStagePokemon);
 
       cleanData.secondStage.push(secondStagePokemon);
 
@@ -95,7 +94,6 @@ export const cleanEvolutionData = (data) => {
               thirdStage.evolution_details?.[0]
             ),
           };
-          // console.log(thirdStagePokemon);
 
           cleanData.thirdStage.push(thirdStagePokemon);
         });

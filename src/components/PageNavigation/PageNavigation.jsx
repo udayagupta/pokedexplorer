@@ -24,9 +24,13 @@ export const PageNavigation = () => {
       name: "Location Area",
       id: "location-section",
     },
+    {
+      name: "Base Stats",
+      id: "stats-section"
+    }
   ];
 
-  const scrollToSectio = (id) => {
+  const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -36,7 +40,7 @@ export const PageNavigation = () => {
   return (
     <section
       aria-labelledby="page-nav"
-      className="p-3 flex justify-center gap-3 flex-col items-center "
+      className="p-3 flex justify-center gap-3 flex-col items-center"
     >
       <ul className="flex justify-between items-center w-full gap-5 page-nav">
         {navigations.map((nav, index) => (
@@ -47,7 +51,7 @@ export const PageNavigation = () => {
           >
             <button
               className="w-full cursor-pointer"
-              onClick={() => scrollToSectio(nav.id)}
+              onClick={() => scrollToSection(nav.id)}
             >
               {nav.name}
             </button>
