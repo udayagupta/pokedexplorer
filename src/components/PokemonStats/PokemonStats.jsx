@@ -6,14 +6,14 @@ import { TableRow } from "../CustomTable/TableRow.jsx";
 const TableRowValue = ({ stat }) => {
   return (
     <div className="flex justify-between items-center gap-5">
-      <div title="Base Stat" className="w-[5%] text-right">{stat.base_stat}</div>
+      <div title="Base Stat" className="max-w-[5%] text-right">{stat.base_stat}</div>
       <div className="w-full">
         <span
           style={{ width: `${stat.bar_width}%` }}
           className="block bg-orange-500 rounded-[100vw] h-[10px]"
         ></span>
       </div>
-      <div title="Max Stat" className="w-[5%] pr-2 text-right">{stat.max_stat}</div>
+      <div title="Max Stat" className="min-w-[5%] pr-2 text-right">{stat.max_stat}</div>
     </div>
   );
 };
@@ -22,7 +22,7 @@ export const PokemonStats = ({ baseStats }) => {
   const { cleanStatsData, totalBaseStats } = calculateStats(baseStats);
 
   return (
-    <section id="stats-section" className=" flex flex-col gap-2">
+    <section id="stats-section" className="overflow-x-auto flex flex-col gap-2">
       <Heading title={"Base Stats"} />
       <Table>
         {cleanStatsData.map((stat, index) => (

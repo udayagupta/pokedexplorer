@@ -65,6 +65,7 @@ export const TrainingSection = ({ data }) => {
     );
   };
 
+
   return (
     <section id="training-section" className="w-full flex flex-col gap-2 info-section rounded-md">
       <Heading title={"Training"}/>

@@ -73,7 +73,6 @@ export const BasicPokemonInfo = ({ data, gameVersion, nationalDexNumber }) => {
           <motion.img
             initial={imageAnimation.initial}
             animate={imageAnimation.animate}
-
             transition={{
               delay: 0.4,
             }}

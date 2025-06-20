@@ -1,4 +1,3 @@
-import React from "react";
 import { Table } from "./CustomTable/Table";
 import { TableRow } from "./CustomTable/TableRow";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
@@ -77,6 +76,7 @@ export const BreedingSection = ({ data }) => {
       </p>
     );
   };
+
 
   return (
     <section id="breeding-section" className=" flex flex-col gap-2 w-full info-section rounded-md">

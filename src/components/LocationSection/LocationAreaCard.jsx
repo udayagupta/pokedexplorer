@@ -3,7 +3,12 @@ import { scaleAnimation } from "../../utils/animation";
 
 export const LocationAreaCard = ({ item }) => {
   return (
-    <motion.div initial={scaleAnimation.initial} animate={scaleAnimation.animate} transition={{duration: 0.5}} className="bg-slate-950 text-sm location-area-card rounded-md w-[200px] min-h-max">
+    <motion.div
+      initial={scaleAnimation.initial}
+      animate={scaleAnimation.animate}
+      transition={{ duration: 0.5 }}
+      className="bg-slate-950 text-sm location-area-card rounded-md w-[250px] min-h-max"
+    >
       <div className="bg-slate-700 p-2">
         <h4 className="uppercase">{item.name}</h4>
       </div>
@@ -22,8 +27,9 @@ export const LocationAreaCard = ({ item }) => {
                 : `${item.encounter_details[0].max_level}`}
             </p>
             {item.encounter_details[0].condition_values.length > 0 && (
-              <p>
-                Condition: {item.encounter_details[0].condition_values[0].name.replace(
+              <p className="capitalize">
+                Condition:{" "}
+                {item.encounter_details[0].condition_values[0].name.replace(
                   /-/g,
                   " "
                 )}

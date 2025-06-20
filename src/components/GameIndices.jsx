@@ -1,6 +1,4 @@
-import React from "react";
-
-export const GameIndices = ({ gameIndices, setSelectedGameIndex, selected }) => {
+export const GameIndices = ({ gameIndices, setSelectedGameIndex, selected, id }) => {
   const handleChange = (event) => {
     setSelectedGameIndex(event.target.value);
   };
@@ -15,7 +13,7 @@ export const GameIndices = ({ gameIndices, setSelectedGameIndex, selected }) => 
 
   return (
     <div className="flex items-center gap-4">
-      <label htmlFor="gameIndices" className="text-xl">
+      <label htmlFor={id} className="text-xl">
         Game Version
       </label>
       <select
@@ -23,7 +21,7 @@ export const GameIndices = ({ gameIndices, setSelectedGameIndex, selected }) => 
         onChange={(e) => handleChange(e)}
         value={selected}
         name="gameIndices"
-        id="gameIndices"
+        id={id}
       >
         {gameVersions?.map((gameIndex, index) => (
           <option key={index} value={gameIndex}>

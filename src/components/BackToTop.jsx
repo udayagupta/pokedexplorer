@@ -27,7 +27,7 @@ export const BackToTop = () => {
     isVisible && (
       <button
         onClick={scrollToTop}
-        className="sticky float-right mr-10 bottom-10 z-40 bg-slate-700 p-4 text-lg opacity-90 rounded-[50%] cursor-pointer"
+        className="sticky max-w-max float-right mr-10 bottom-10 z-40 bg-slate-700 p-4 text-lg opacity-90 rounded-[50%] cursor-pointer"
       >
         <FaArrowUp />
       </button>

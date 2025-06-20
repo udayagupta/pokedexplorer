@@ -1,22 +1,8 @@
-import {PokemonType} from "../PokemonType";
 import { TableRow } from "../CustomTable/TableRow";
 import { Table } from "../CustomTable/Table";
 import { PokemonCries } from "./PokemonCries";
 import { AbilitiesSection } from "../AbilitiesSection";
-
-const PokemonTypes = ({ types }) => {
-  return (
-    <div className="my-3">
-      <ul className="flex gap-4">
-        {types.map((type, index) => (
-          <li key={index}>
-            <PokemonType size="40px" type={type.type.name} with_text={false} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+import { ListPokemonTypes } from "../ListPokemonTypes";
 
 export const BasicInfoTable = ({ data, nationalPokedex }) => {
   const weightKg = data.pokemon.weight / 10;
@@ -61,7 +47,7 @@ export const BasicInfoTable = ({ data, nationalPokedex }) => {
       />
       <TableRow
         title={"Types"}
-        value={<PokemonTypes types={data.pokemon.types} />}
+        value={<ListPokemonTypes types={data.pokemon.types} />}
       />
       <TableRow
         title={"Abilities"}

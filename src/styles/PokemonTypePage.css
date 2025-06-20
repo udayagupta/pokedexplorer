@@ -1,0 +1,10 @@
+@media (max-width: 770px) {
+    .pokemon-type {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .pokemon-type-page {
+        flex-direction: column;
+    }
+}

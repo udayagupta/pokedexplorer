@@ -13,7 +13,6 @@ export const calculateStats = (baseStats) => {
       max_stat = Math.floor((base_stat * 2 + 99) * 1.1);
     }
 
-
     const newStat = {
       name,
       base_stat,
@@ -21,10 +20,8 @@ export const calculateStats = (baseStats) => {
       bar_width: (base_stat / max_stat) * 100,
     };
 
-
     cleanStatsData.push(newStat);
   });
   
-  console.log(cleanStatsData);
   return { cleanStatsData, totalBaseStats };
 };

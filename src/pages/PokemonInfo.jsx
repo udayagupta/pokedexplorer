@@ -3,12 +3,10 @@ import { useParams } from "react-router-dom";
 import "./../styles/PokemonInfo.css";
 import { usePokemonInfo } from "../hooks/usePokemonInfo.js";
 import { usePokemonSpecies } from "../hooks/usePokemonSpecies.js";
-import { Link } from "react-router-dom";
 import {
   Loader,
   GameIndices,
   BasicPokemonInfo,
-  SearchBox,
   BreedingSection,
   TrainingSection,
   FormsSection,
@@ -17,7 +15,7 @@ import {
   PokemonNavigation,
   PageNavigation,
   BackToTop,
-  PokemonStats
+  PokemonStats,
 } from "../components";
 
 export const PokemonInfo = () => {
@@ -71,48 +69,46 @@ export const PokemonInfo = () => {
 
   return (
     <>
-      <header className="p-3 px-10 flex items-center justify-between">
-        <div className="text-[2.3rem]">
-          <h1 style={{ fontFamily: "Pokemon Solid" }}>
-            <Link to={"/"}>PokeDexplorer</Link>
-          </h1>
-        </div>
-        <SearchBox />
-      </header>
-      <main
-        className="flex flex-col gap-5"
-        style={{ fontFamily: "Poppins, sans-serif" }}
-      >
-        <div style={{ fontFamily: "Jockey One" }}>
-          <GameIndices
-            gameIndices={gameIndices}
-            selected={selectedGameIndex}
-            setSelectedGameIndex={setSelectedGameIndex}
-          />
-        </div>
-        <PageNavigation />
-        <BasicPokemonInfo
-          data={{ pokemon, pokemonSpecies }}
-          gameVersion={selectedGameIndex}
-          nationalDexNumber={nationalDexNumber}
+      <div style={{ fontFamily: "Jockey One" }}>
+        <GameIndices
+          gameIndices={gameIndices}
+          selected={selectedGameIndex}
+          setSelectedGameIndex={setSelectedGameIndex}
+          id={"gameIndices1"}
         />
-        <div className="flex info-sections gap-4">
-          <BreedingSection data={{ pokemon, pokemonSpecies }} />
-          <TrainingSection
-            data={{ pokemon, pokemonSpecies, gameVersion: selectedGameIndex }}
-          />
-          <FormsSection data={{ pokemonSpecies, name: pokemon.name }} />
-        </div>
-        <PokemonStats baseStats={pokemon.stats}/>
-        <PokemonEvolution url={pokemonSpecies.evolution_chain.url} />
-        <LocationSection
-          url={pokemon.location_area_encounters}
-          gameVersion={selectedGameIndex}
+      </div>
+      <PageNavigation />
+      <BasicPokemonInfo
+        data={{ pokemon, pokemonSpecies }}
+        gameVersion={selectedGameIndex}
+        nationalDexNumber={nationalDexNumber}
+      />
+      <div className="flex info-sections gap-4">
+        <BreedingSection data={{ pokemon, pokemonSpecies }} />
+        <TrainingSection
+          data={{ pokemon, pokemonSpecies, gameVersion: selectedGameIndex }}
         />
-        <PokemonNavigation id={nationalDexNumber} />
-        <PageNavigation />
-      </main>
-      <BackToTop />
+        <FormsSection data={{ pokemonSpecies, name: pokemon.name }} />
+      </div>
+      <div className="overflow-x-auto">
+        <PokemonStats baseStats={pokemon.stats} />
+      </div>
+      <PokemonEvolution url={pokemonSpecies.evolution_chain.url} />
+      <div style={{ fontFamily: "Jockey One" }}>
+        <GameIndices
+          gameIndices={gameIndices}
+          selected={selectedGameIndex}
+          setSelectedGameIndex={setSelectedGameIndex}
+          id={"gameIndices2"}
+        />
+      </div>
+      <LocationSection
+        url={pokemon.location_area_encounters}
+        gameVersion={selectedGameIndex}
+      />
+      <PokemonNavigation id={nationalDexNumber} />
+      <PageNavigation />
+      {/* <BackToTop /> */}
     </>
   );
 };

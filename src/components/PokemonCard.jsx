@@ -8,18 +8,13 @@ import { cardAnimation, imageAnimation } from "../utils/animation";
 export const PokemonCard = ({ name }) => {
   const { pokemon, loading, error } = usePokemonInfo(name);
 
-  if (loading)
+  if (loading || error) {
     return (
-      <div className="h-[300px] rounded-lg w-[180px] flex justify-center items-center">
-        <Loader size="50px" />
+      <div className="h-[300px] w-[180px] flex items-center justify-center rounded-lg bg-slate-800">
+        {loading ? <Loader size="50px" /> : <p className="text-xl">Not Found!</p>}
       </div>
     );
-  if (error)
-    return (
-      <div className="h-[300px] rounded-lg w-[180px] bg-slate-800 flex justify-center items-center">
-        <p className="text-3xl">Not Found!</p>
-      </div>
-    );
+  }
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -27,6 +22,16 @@ export const PokemonCard = ({ name }) => {
       behavior: "smooth",
     });
   };
+
+  const {
+    id,
+    name: rawName,
+    sprites,
+    types,
+  } = pokemon
+
+  const displayName = rawName.replace(/-/g, " ");
+  const imageUrl = sprites?.other?.["official-artwork"]?.front_default;
 
   return (
     <motion.div
@@ -36,8 +41,9 @@ export const PokemonCard = ({ name }) => {
         duration: 0.3,
         scale: { type: "tween" },
       }}
+      style={{fontFamily: "Jockey One"}}
     >
-      <Link to={`/pokemon/${pokemon.name}`} onClick={scrollToTop}>
+      <Link to={`/pokemon/${rawName}`} onClick={scrollToTop}>
         <div className="pokemon-card bg-slate-800 h-[300px] w-[180px] p-4 flex flex-col gap-3 justify-center items-center rounded-lg">
           <div className="">
             <motion.img
@@ -49,22 +55,21 @@ export const PokemonCard = ({ name }) => {
               }}
               loading="lazy"
               className="h-[110px] w-[110px]"
-              src={
-                pokemon["sprites"]["other"]["official-artwork"]["front_default"]
-              }
-              alt={pokemon.name}
+              src={imageUrl}
+              alt={displayName}
             />
           </div>
           <div className="text-center  capitalize text-2xl">
-            <h3>{pokemon.name.split("-").join(" ")}</h3>
+            <h3>{displayName}</h3>
           </div>
-          <div className="text-3xl"># {pokemon.id}</div>
+          <div className="text-3xl"># {id}</div>
           <div className="pokemon-types  flex gap-3 justify-center">
-            {pokemon.types.map((type, index) => (
+            {types.map((type) => (
               <PokemonType
                 key={type.type.name}
                 type={type.type.name}
                 with_text={false}
+                disableLink={true}
               />
             ))}
           </div>
