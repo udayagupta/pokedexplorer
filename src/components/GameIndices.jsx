@@ -12,7 +12,7 @@ export const GameIndices = ({ gameIndices, setSelectedGameIndex, selected, id })
   const gameVersions = prepareGameVersions()
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 px-5">
       <label htmlFor={id} className="text-xl">
         Game Version
       </label>

@@ -58,6 +58,7 @@ export const PokemonEvolution = ({ url }) => {
         className="chain flex overflow-x-auto p-3 rounded-md flex-col justify-center items-center mb-3"
       >
         <PokemonCard name={evolutionData.firstStage} />
+        {evolutionData.secondStage.length === 0 && <p style={{fontFamily: "Poppins"}} className="capitalize mt-5">{evolutionData.firstStage.replace(/-/g, " ")} does not evolve</p>}
         <EvolutionList list={evolutionData.secondStage} />
         <EvolutionList list={evolutionData.thirdStage} />
       </div>

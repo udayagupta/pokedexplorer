@@ -10,7 +10,7 @@ export const PokemonCard = ({ name }) => {
 
   if (loading || error) {
     return (
-      <div className="h-[300px] w-[180px] flex items-center justify-center rounded-lg bg-slate-800">
+      <div className="h-[300px] w-[180px] flex items-center justify-center rounded-lg">
         {loading ? <Loader size="50px" /> : <p className="text-xl">Not Found!</p>}
       </div>
     );

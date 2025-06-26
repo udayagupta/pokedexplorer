@@ -17,6 +17,18 @@ main {
     padding: 2rem;
 }
 
+@keyframes poke-img-animation {
+    0% {
+        transform: translateY(0);
+    } 100% {
+        transform: translateY(20px);
+    }
+}
+
+.pokemon-img {
+    animation: poke-img-animation 1s infinite alternate linear;
+}
+
 @media (max-width: 680px) {
     header {
         flex-direction: column;

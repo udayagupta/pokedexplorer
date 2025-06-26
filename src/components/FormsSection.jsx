@@ -4,6 +4,13 @@ import Heading from "./Heading";
 import { Link } from "react-router-dom";
 
 export const FormsSection = ({ data }) => {
+  const scrollToTop = () => {
+    const basicInfo = document.getElementById("basic-info-section")
+    basicInfo.scrollIntoView({
+      behavior: "smooth"
+    })
+  }
+
   const PokemonVarieties = ({ varieties, name }) => {
     return (
       <ul className="flex flex-col gap-2 text-[14px] font-semibold">
@@ -17,7 +24,7 @@ export const FormsSection = ({ data }) => {
             </li>
           ) : (
             <li key={index} className="capitalize p-1 text-center rounded-md border">
-              <Link to={`/pokemon/${item.pokemon.name}`}>
+              <Link onClick={scrollToTop} to={`/pokemon/${item.pokemon.name}`}>
                 <p>{item.pokemon.name.split("-").join(" ")} {item.is_default ? "(Default)" : ""}</p>
               </Link>
             </li>

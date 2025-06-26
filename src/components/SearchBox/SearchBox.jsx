@@ -39,9 +39,9 @@ export const SearchBox = () => {
   };
 
   return (
-    <div className="relative">
+    <div style={{fontFamily: "Jockey One"}} className="relative">
       <input
-        placeholder="Search"
+        placeholder="Search Pokemon"
         className="bg-slate-800 w-[320px] h-[60px] rounded-md text-xl"
         id="search-pokemon"
         type="text"
