@@ -14,7 +14,6 @@ import {
   LocationSection,
   PokemonNavigation,
   PageNavigation,
-  BackToTop,
   PokemonStats,
 } from "../components";
 
@@ -53,19 +52,29 @@ export const PokemonInfo = () => {
     );
   }, [pokemonSpecies]);
 
-  if (loading || loadingSpecies)
-    return (
-      <div className=" flex justify-center items-center h-screen w-screen">
-        <Loader size={"50px"} />
-      </div>
-    );
 
-  if (error || errorSpecies)
+
+  if (error) {
     return (
-      <div>
-        <p>Error Fetching the pokemon data</p>
+      <div className="text-center min-h-[350px] flex justify-center items-center mt-10 text-3xl">
+        <p>Pokémon not found: {name} 😥</p>
       </div>
     );
+  }
+  if (errorSpecies) {
+    return (
+      <div className="text-center text-red-500 mt-10 text-2xl">
+        Error fetching Pokémon species data
+      </div>
+    );
+  }
+
+  if (loading || loadingSpecies)
+  return (
+    <div className=" flex justify-center items-center h-screen w-screen">
+      <Loader size={"50px"} />
+    </div>
+  );
 
   return (
     <>

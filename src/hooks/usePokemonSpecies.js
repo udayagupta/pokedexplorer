@@ -13,7 +13,7 @@ export const usePokemonSpecies = (url) => {
       );
       setPokemonSpecies(response.data);
     } catch (error) {
-      setErrorSpecies(error);
+      setErrorSpecies(true);
     } finally {
       setLoadingSpecies(false);
     }

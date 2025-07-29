@@ -13,7 +13,7 @@ export const usePokemonType = (id) => {
         const response = await axios.get(`https://pokeapi.co/api/v2/type/${id}`);
         setTypeInfo(response.data);
     } catch (error) {
-        setError(error);
+        setError(true);
     } finally {
         setLoading(false);
     }

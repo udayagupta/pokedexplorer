@@ -15,7 +15,7 @@ export const usePokemonInfo = (name) => {
       setPokemon(response.data);
     
     } catch (error) {
-        setError(error)
+        setError(true);
     } finally {
         setLoading(false);
     }

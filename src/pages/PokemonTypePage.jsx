@@ -34,7 +34,21 @@ export const PokemonTypePage = () => {
   };
 
   const { name } = useParams();
-  const { typeInfo, loading, error } = usePokemonType(pokemonTypes[name]);
+
+  const typeId = pokemonTypes[name];
+
+  if (!typeId) {
+    return (
+      <div
+        style={{ fontFamily: "Poppins" }}
+        className="min-h-[400px] flex justify-center items-center"
+      >
+        <p className="text-3xl font-semibold">Error fetching type info</p>
+      </div>
+    );
+  }
+
+  const { typeInfo, loading, error } = usePokemonType(typeId);
 
   const typeNameEng = useMemo(() => {
     return (
@@ -44,20 +58,21 @@ export const PokemonTypePage = () => {
 
   document.title = `${typeNameEng || name} | Pokemon Type`;
 
+  if (error) {
+    return (
+      <div
+        style={{ fontFamily: "Poppins" }}
+        className="min-h-[400px] flex justify-center items-center"
+      >
+        <p className="text-3xl font-semibold">Error fetching type info</p>
+      </div>
+    )
+  }
+
   if (loading)
     return (
       <div className="w-screen h-screen flex justify-center items-center">
         <Loader size={"50px"} />
-      </div>
-    );
-
-  if (error)
-    return (
-      <div
-        style={{ fontFamily: "Poppins" }}
-        className="w-screen h-screen flex justify-center items-center"
-      >
-        <p className="text-3xl font-semibold">Error fetching type info</p>
       </div>
     );
 
