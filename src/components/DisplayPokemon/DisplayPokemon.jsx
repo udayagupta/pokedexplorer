@@ -5,6 +5,7 @@ import { Loader } from "../Loader";
 
 export const DisplayPokemon = () => {
   const limit = 20;
+  const GRAPHQL_URL = "https://beta.pokeapi.co/graphql/v1beta2/"
   const [offset, setOffset] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ export const DisplayPokemon = () => {
 
   const query = `
     homepagePokemonData {
-      pokemonspecies(limit: ${limit}, offset: ${offset}) {
+      pokemonspecies(limit: ${limit}, offset: ${offset}, order_by: { id: asc }) {
         id
         name
         pokemons {
@@ -21,11 +22,12 @@ export const DisplayPokemon = () => {
               name
             }
           }
-          pokemonsprites {
-            sprites
-          }
-          
         }
+      pokemonspeciesnames(where: {language: {name: {_eq: "en"}}}) {
+        name
+      }
+      pokemondexnumbers(where: {pokedex: {name: {_eq: "national"}}}) {
+        pokedex_number
       }
   }
   `
