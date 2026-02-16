@@ -16,6 +16,7 @@ import {
   PageNavigation,
   PokemonStats,
 } from "../components";
+import { Helmet } from "react-helmet-async";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
@@ -26,7 +27,7 @@ export const PokemonInfo = () => {
   const [selectedGameIndex, setSelectedGameIndex] = useState();
 
   useEffect(() => {
-    document.title = `${pokemonSpecies?.names?.find((item) => item.language.name === "en").name || name} | Pokemon`;
+    // document.title = `${pokemonSpecies?.names?.find((item) => item.language.name === "en").name || name} | Pokemon`;
 
     if (pokemon && pokemonSpecies) {
       setSelectedGameIndex(
@@ -78,6 +79,10 @@ export const PokemonInfo = () => {
 
   return (
     <>
+    <Helmet>
+      <title>{pokemonSpecies?.names?.find((item) => item.language.name === "en").name || name} | Pokemon</title>
+      <meta name="description" content={`Stats, evolution, location encounters for ${pokemonSpecies?.names?.find((item) => item.language.name === "en").name || name}`}/>
+    </Helmet>
       <div style={{ fontFamily: "Jockey One" }}>
         <GameIndices
           gameIndices={gameIndices}

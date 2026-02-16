@@ -1,40 +1,30 @@
 export const PageNavigation = () => {
   const navigations = [
-    {
-      name: "Baisc Info",
-      id: "basic-info-section",
-    },
-    {
-      name: "Breeding",
-      id: "breeding-section",
-    },
-    {
-      name: "Training",
-      id: "training-section",
-    },
-    {
-      name: "Forms",
-      id: "forms-section",
-    },
-    {
-      name: "Evolution",
-      id: "evolution-section",
-    },
-    {
-      name: "Location Area",
-      id: "location-section",
-    },
-    {
-      name: "Base Stats",
-      id: "stats-section"
-    }
+    { name: "Baisc Info", id: "basic-info-section" },
+    { name: "Breeding", id: "breeding-section" },
+    { name: "Training", id: "training-section" },
+    { name: "Forms", id: "forms-section" },
+    { name: "Evolution", id: "evolution-section" },
+    { name: "Location Area", id: "location-section" },
+    { name: "Base Stats", id: "stats-section" }
   ];
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      section.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+
+    section.classList.remove("section-flash");
+
+    void section.offsetWidth;
+
+    section.classList.add("section-flash");
+
+    setTimeout(() => {
+      section.classList.remove("section-flash");
+    }, 3000);
+
   };
 
   return (

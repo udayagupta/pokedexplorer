@@ -7,12 +7,13 @@ export const SearchBox = () => {
   const [value, setValue] = useState("");
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [debouncedValue, setDebouncedValue] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon-species?limit=100000&offset=0"
+          "https://pokeapi.co/api/v2/pokemon-species?limit=2000&offset=0"
         );
         setData(response.data.results);
       } catch (error) {
@@ -23,15 +24,31 @@ export const SearchBox = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, 300)
+
+    return () => clearTimeout(timer);
+  }, [value])
 
   const suggestions = useMemo(() => {
-    if (!value) return [];
+    if (!debouncedValue) return [];
 
-    return data.filter((item) =>
-      item.name.toLowerCase().includes(value.toLowerCase())
-    )
-    .slice(0, 5);
-  }, [value, data]);
+    const loweredSearch = debouncedValue.toLowerCase()
+    let results = [];
+
+    for (const item of data) {
+      if (item.name.toLowerCase().includes(loweredSearch)) {
+        results.push(item);
+
+        if (results.length >= 5) break;
+      }
+    }
+    
+    return results;
+
+  }, [debouncedValue, data]);
 
 
   const handleChange = (event) => {
@@ -52,8 +69,8 @@ export const SearchBox = () => {
       />
       <ul className="absolute w-full rounded-md mt-2 bg-slate-700 overflow-hidden z-10">
         {suggestions?.map((item, index) => (
-          <li className="text-xl bg-slate-950" key={index}>
-            <PokemonSuggestion name={item.name} clearSuggestions={() =>{setValue("");}}/>
+          <li className="text-xl bg-slate-950" key={item.name}>
+            <PokemonSuggestion url={item.url} name={item.name} clearSuggestions={() =>{setValue("");}}/>
           </li>
         ))}
       </ul>

@@ -10,6 +10,26 @@ export const DisplayPokemon = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const query = `
+    homepagePokemonData {
+      pokemonspecies(limit: ${limit}, offset: ${offset}) {
+        id
+        name
+        pokemons {
+          pokemontypes {
+            type {
+              name
+            }
+          }
+          pokemonsprites {
+            sprites
+          }
+          
+        }
+      }
+  }
+  `
+
   const fetchPokemon = async () => {
     try {
       const response = await axios.get(
@@ -26,13 +46,6 @@ export const DisplayPokemon = () => {
 
   const loadMore = () => {
     setOffset((prevData) => prevData + limit);
-
-    setTimeout(() => {
-      window.scrollBy({
-        behavior: "smooth",
-        top: 300,
-      })
-    }, 500)    
   };
 
   useEffect(() => {
@@ -48,7 +61,7 @@ export const DisplayPokemon = () => {
 
   if (loading) return (
     <div className="flex justify-center">
-      <Loader size={"50px"}/>
+      <Loader size={"50px"} />
     </div>
   )
 
@@ -58,9 +71,9 @@ export const DisplayPokemon = () => {
         {loading ? (
           <Loader />
         ) : (
-          currentPokemon?.map((item, index) => (
+          currentPokemon?.map((item, _) => (
             <li
-              key={index}
+              key={item.name}
             >
               <PokemonCard name={item.name} />
             </li>
