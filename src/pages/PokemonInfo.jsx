@@ -16,7 +16,6 @@ import {
   PageNavigation,
   PokemonStats,
 } from "../components";
-import { Helmet } from "react-helmet-async";
 
 export const PokemonInfo = () => {
   const { name } = useParams();
